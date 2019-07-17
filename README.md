@@ -1,5 +1,5 @@
 # SP1920
-Software Projekt HS-Bochum 19/20. Aufbau und Test einer virtuellen Entwicklungsumgebung für NAO-Roboter. (z.B. mit dem WEBOTS-Simulator)
+Software Projekt HS-Bochum 2019/2020. Aufbau und Test einer virtuellen Entwicklungsumgebung für NAO-Roboter. (z.B. mit dem WEBOTS-Simulator)
 ## Systemanforderungen von Webots
 * mindestens 2 GHz dual core CPU und 2 GB RAM; empfohlen sind ein quad core CPU
 * Es wird eine NVIDIA- oder AMD OpenGL-fähige Grafikkarte (ab Version 3.3) mit mindestens 512 MB RAM benötigt. (Intel wird nicht empfohlen).
