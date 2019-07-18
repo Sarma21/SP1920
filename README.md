@@ -12,8 +12,10 @@ Nur auf: Windows 10, Windows 8.1, Windows 8 und Windows 7.
 ### MAC
 * Empfohlen: macOS 10.13 "High Sierra" und 10.12 "Sierra".
 * auf allen Grafikkarten, die in relativ neuen Apple-Computern enthalten sind.
+
 ## Webots User Guuide
 * [Webots User Guide](https://www.cyberbotics.com/doc/guide/index)
+* [NAO Motoren](https://cyberbotics.com/doc/guide/nao)
 ## Webots Documentation
 * [Webots Reference Manual (Java-API)](https://www.cyberbotics.com/doc/reference/java-api)
 * [Nodes and API Functions](https://www.cyberbotics.com/doc/reference/nodes-and-api-functions)
