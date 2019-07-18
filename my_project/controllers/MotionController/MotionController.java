@@ -75,18 +75,19 @@ public class MotionController {
     //  ds.enable(timeStep);
     
     
-    
     startMotion(handWave);          
+   /*
     startMotion(forWard);
     startMotion(forWard);
     startMotion(sideStepRight);
     startMotion(turnLeft); 
     startMotion(turnLeft);    
+    */
     startMotion(bauch);
     startMotion(bauch);
     startMotion(up);
     startMotion(handWave);
-
+    startMotion(up);
     
 
     // Main loop:
