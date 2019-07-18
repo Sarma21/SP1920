@@ -7,7 +7,7 @@ Software Projekt HS-Bochum 2019/2020. Aufbau und Test einer virtuellen Entwicklu
 * Ubuntu (LTS), derzeitige Version 18.04.
 * auch: RedHat, Mandrake, Debian, Gentoo, SuSE, und Slackware.
 * nur NVIDIA-Grafikkarten
-### Windows 64-Bit
+### Windows 64-Bit TEST
 Nur auf: Windows 10, Windows 8.1, Windows 8 und Windows 7.
 ### MAC
 * Empfohlen: macOS 10.13 "High Sierra" und 10.12 "Sierra".
