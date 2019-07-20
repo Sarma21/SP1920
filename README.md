@@ -10,7 +10,7 @@ Software Projekt an der HS-Bochum 2019/2020.
 * Ubuntu (LTS), derzeitige Version 18.04.
 * auch: RedHat, Mandrake, Debian, Gentoo, SuSE, und Slackware.
 * nur NVIDIA-Grafikkarten
-### Windows 64-Bit TEST
+### Windows 64-Bit
 Nur auf: Windows 10, Windows 8.1, Windows 8 und Windows 7.
 ### MAC
 * Empfohlen: macOS 10.13 "High Sierra" und 10.12 "Sierra".
@@ -20,8 +20,8 @@ Nur auf: Windows 10, Windows 8.1, Windows 8 und Windows 7.
 * [Accessing the NAO Web page](http://doc.aldebaran.com/2-1/nao/webpage_access.html#access-webpage-nao)
 * [NAO Motoren](https://cyberbotics.com/doc/guide/nao)
 
-### Accessing NAO over ssh
-user | password
+### Zugriff NAO über ssh
+Benutzer | Passwort
 --- | ---
 root | root
 

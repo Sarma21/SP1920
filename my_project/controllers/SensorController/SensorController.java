@@ -4,16 +4,12 @@
 // Author:
 // Modifications:
 
-// You may need to add other webots classes such as
-//  import com.cyberbotics.webots.controller.DistanceSensor;
-//  import com.cyberbotics.webots.controller.LED;
 import com.cyberbotics.webots.controller.*;
 
 // Here is the main class of your controller.
 // This class defines how to initialize and how to run your controller.
 public class SensorController {
-
-  static String pfad = "/home/pc/Downloads/webots/projects/robots/softbank/nao/motions/"; 
+  static String pfad = System.getProperty("user.dir") + System.getProperty("file.separator") + "Motions" + System.getProperty("file.separator");
   static Motion forWard, gehen, sideStepRight, turnLeft, turnLeft60, turnLeft180, handWave, anfall, up, bauch;
   static Robot robot = new Robot();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
