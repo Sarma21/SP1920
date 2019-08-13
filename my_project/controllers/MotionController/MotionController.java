@@ -15,7 +15,8 @@ import java.nio.file.Path;
 // Here is the main class of your controller.
 // This class defines how to initialize and how to run your controller.
 public class MotionController {
-  static String pfad = "/home/pc/Downloads/webots/projects/robots/softbank/nao/motions/";
+  //static String pfad = "/home/pc/Downloads/webots/projects/robots/softbank/nao/motions/";
+  static String pfad = "Motions/"; 
   //static String path = FileSystems.getDefault().getPath("webots","projects","robots","softbank","nao","motions");
   //static String pfad = "../../";
   static Robot robot = new Robot();
