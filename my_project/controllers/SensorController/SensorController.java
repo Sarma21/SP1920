@@ -4,6 +4,7 @@ public class SensorController {
   static Robot robot = new Robot();
   static Keyboard keyboard = new Keyboard();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
+  static int[] imageTop, imageBottom;
   
   // simulated devices
   static Camera cameraTop, cameraBottom; //cameras
@@ -56,6 +57,16 @@ public class SensorController {
     rfoot_rbumper.enable(timeStep);
     //keyboard
     keyboard.enable(10 * timeStep);
+  }
+  
+    static void camCheck(){
+  System.out.println("Array: 222" );
+    imageTop = cameraTop.getImage();
+    System.out.println("Array: 3333" );
+    imageBottom = cameraBottom.getImage();
+    System.out.println("Array: 44444" );
+    
+    System.out.println("Array: " + imageTop.length);
   }
   
   // load motion files
@@ -136,6 +147,7 @@ public class SensorController {
     loadMotionFiles();
     
     startMotion(handWave);
+    camCheck();
     //until key is pressed
     int key = -1;
     do {
