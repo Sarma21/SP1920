@@ -1,4 +1,5 @@
 import com.cyberbotics.webots.controller.*;
+import java.io.File;
 
 public class SensorController {
   static Robot robot = new Robot();
@@ -16,10 +17,11 @@ public class SensorController {
   static LED led; //led
   
   // motion file handles
-  static Motion forWard, gehen, sideStepRight, turnLeft, turnLeft60, turnLeft180, handWave, anfall, up, bauch;
-  static String pfad = System.getProperty("user.dir") + System.getProperty("file.separator") + "Motions"
+  static Motion handWave,forWard, gehen, sideStepRight, turnLeft, turnLeft60, turnLeft180, anfall, up, bauch, shoot;
+  static String  pfad = System.getProperty("user.dir") + System.getProperty("file.separator") + "Motions"
       + System.getProperty("file.separator");
-      
+  static File file = new File(System.getProperty("user.dir"));
+  static String fs = System.getProperty("file.separator");
   static void findAndEnableDevices() {
     // camera
     cameraTop = new Camera("CameraTop");
@@ -60,16 +62,20 @@ public class SensorController {
   
   // load motion files
   public static void loadMotionFiles() {
-    handWave = new Motion(pfad + "HandWave.motion");
+  handWave = new Motion(pfad + "HandWave.motion");
+  shoot = new Motion(pfad + "Shoot.motion");
+  up = new Motion(pfad + "StandUpFromFront.motion");
+    turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
     forWard = new Motion(pfad + "Gehen50.motion");
     gehen = new Motion(pfad + "Gehen50Anfang.motion");
     sideStepRight = new Motion(pfad + "SideStepRight.motion");
     turnLeft = new Motion(pfad + "TurnLeft40.motion");
     turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
-    turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
+    
     anfall = new Motion(pfad + "Anfall.motion");
-    up = new Motion(pfad + "StandUpFromFront.motion");
+    
     bauch = new Motion(pfad + "bauch.motion");
+    
   }
 
   static void startMotion(Motion motion) {
@@ -130,12 +136,21 @@ public class SensorController {
     System.out.println("Rechts L: " + rl + " R: " + rr);
   }
   
+    static void gyro(){
+       double[] wert = gyro.getValues();
+       System.out.println("X: " + wert[0] + "\nY: " + wert[1] + "\nZ: " + wert[2]);
+    }
+  
   public static void main(String[] args) {
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
+    file = file.getParentFile();
+    pfad = file.getParentFile() + fs + "Motions" + fs;
     
-    startMotion(handWave);
+    System.out.println("Pfad:  " + pfad);
+    
+    //startMotion(shoot);
     //until key is pressed
     int key = -1;
     do {
@@ -146,7 +161,7 @@ public class SensorController {
   
     while (robot.step(timeStep) != -1) {
       if(key >= 0) runCommand(key);
-      //gefallen();
+      gefallen();
       //printUltrasoundSensors();
       move();
       key = keyboard.getKey();

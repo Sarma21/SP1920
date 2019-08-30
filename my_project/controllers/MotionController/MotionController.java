@@ -65,7 +65,8 @@ public class MotionController {
     // create the Robot instance.
     
     loadMotionFiles();
-
+    robot.setMode(2);      //Real Robot 2
+    System.out.println("Mode: " + robot.getMode());
     // get the time step of the current world.
     
 
