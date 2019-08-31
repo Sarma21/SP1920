@@ -2,11 +2,14 @@ import com.cyberbotics.webots.controller.*;
 
 public class SensorController {
   static Robot robot = new Robot();
+  static CameraRecognitionObject cameraRecognitionObject = new CameraRecognitionObject();
   static Keyboard keyboard = new Keyboard();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
   static int[] imageTop, imageBottom;
+  static double[] iu;
   
   // simulated devices
+  static InertialUnit inertialUnit;
   static Camera cameraTop, cameraBottom; //cameras
   static TouchSensor lfoot_lbumper, lfoot_rbumper;  // left foot bumpers
   static TouchSensor rfoot_lbumper, rfoot_rbumper;  // right foot bumpers
@@ -22,13 +25,14 @@ public class SensorController {
       + System.getProperty("file.separator");
       
   static void findAndEnableDevices() {
+    // inertialUnit
+    inertialUnit = new InertialUnit("InertialUnit");
+    inertialUnit.enable(timeStep);
     // camera
     cameraTop = new Camera("CameraTop");
     cameraBottom = new Camera("CameraBottom");
     cameraTop.enable(4*timeStep);
     cameraBottom.enable(4*timeStep);
-    //TouchSensor
-    //DistanceSensor
     //Accelerometer
     accelerometer = new Accelerometer("accelerometer");
     accelerometer.enable(timeStep);
@@ -59,14 +63,10 @@ public class SensorController {
     keyboard.enable(10 * timeStep);
   }
   
-    static void camCheck(){
-  System.out.println("Array: 222" );
+  static void camCheck(){
     imageTop = cameraTop.getImage();
-    System.out.println("Array: 3333" );
     imageBottom = cameraBottom.getImage();
-    System.out.println("Array: 44444" );
-    
-    System.out.println("Array: " + imageTop.length);
+    System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
   }
   
   // load motion files
@@ -82,16 +82,7 @@ public class SensorController {
     up = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
-
-  static void startMotion(Motion motion) {
-    //start new motion
-    motion.play();
-    do {
-      robot.step(timeStep);
-    } while (!motion.isOver());
-
-  }
-
+  
   static void printUltrasoundSensors() {
     double dist[] = new double[2];
     int i;
@@ -102,6 +93,14 @@ public class SensorController {
     System.out.print("left: " + dist[0] +" m, right " + dist[1] + "m\n");
   }
   
+  static void startMotion(Motion motion) {
+    //start new motion
+    motion.play();
+    do {
+      robot.step(timeStep);
+    } while (!motion.isOver());
+  }
+
   static void move() {
     double dist[] = new double[2];
     double fs[] = new double[2];
@@ -130,15 +129,13 @@ public class SensorController {
       case 3: printUltrasoundSensors(); break;
     }
   }
-  
+ 
   static void gefallen() {
     int ll = (int) lfoot_lbumper.getValue();
     int lr = (int) lfoot_rbumper.getValue();
     int rl = (int) rfoot_lbumper.getValue();
     int rr = (int) rfoot_rbumper.getValue();
-    
-    System.out.println("Links L: " + ll + " R: " + lr);
-    System.out.println("Rechts L: " + rl + " R: " + rr);
+    System.out.println("Links L: " + ll + " R: " + lr + "\nRechts L: " + rl + " R: " + rr);
   }
   
   public static void main(String[] args) {
@@ -147,7 +144,8 @@ public class SensorController {
     loadMotionFiles();
     
     startMotion(handWave);
-    camCheck();
+    //camCheck();
+    
     //until key is pressed
     int key = -1;
     do {
@@ -161,6 +159,7 @@ public class SensorController {
       //gefallen();
       //printUltrasoundSensors();
       move();
+      iu = inertialUnit.getRollPitchYaw();
       key = keyboard.getKey();
     };
   }
