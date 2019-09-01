@@ -22,10 +22,7 @@ public class SensorController {
   
   // motion file handles
   static Motion forWard, gehen, sideStepRight, turnLeft, turnLeft60, turnLeft180, handWave, anfall, up, bauch;
-  static String fs = System.getProperty("file.separator");
-  static File file = new File(System.getProperty("user.dir"));   
-  static String pfad;
-  
+
   static void findAndEnableDevices() {
     // inertialUnit
     inertialUnit = new InertialUnit("InertialUnit");
@@ -79,8 +76,9 @@ public class SensorController {
   
   // load motion files
   public static void loadMotionFiles() {
+    File file = new File(System.getProperty("user.dir"));
     file = (file.getParentFile().getParentFile());
-    pfad = file.getPath() + fs + "motions" + fs;
+    String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
     
     handWave = new Motion(pfad + "HandWave.motion");
     forWard = new Motion(pfad + "Gehen50.motion");
@@ -93,7 +91,7 @@ public class SensorController {
     up = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
-  
+
   static void printUltrasoundSensors() {
     double dist[] = new double[2];
     int i;
@@ -150,28 +148,19 @@ public class SensorController {
   }
   
   public static void main(String[] args) {
+    //robot.setMode(Robot.MODE_REMOTE_CONTROL, s);
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
     
     startMotion(handWave);
     //camCheck();
-    
-    //until key is pressed
-    int key = -1;
-    do {
-      move();
-      
-      key = keyboard.getKey();
-    } while (key >= 0);
-  
+
     while (robot.step(timeStep) != -1) {
-      if(key >= 0) runCommand(key);
       //gefallen();
       //printUltrasoundSensors();
       move();
-      iu = inertialUnit.getRollPitchYaw();
-      key = keyboard.getKey();
+      //iu = inertialUnit.getRollPitchYaw();
     };
   }
 }
