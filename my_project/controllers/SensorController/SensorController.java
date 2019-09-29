@@ -21,7 +21,7 @@ public class SensorController {
   static LED led; //led
   
   // motion file handles
-  static Motion forWard, gehen, sideStepRight, turnLeft, turnLeft60, turnLeft180, handWave, anfall, up, bauch;
+  static Motion forWard, gehen, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
 
   static void findAndEnableDevices() {
     // inertialUnit
@@ -47,10 +47,7 @@ public class SensorController {
     gyro.enable(timeStep);
     
     // ultrasound sensors
-    //us[0] = new DistanceSensor("Sonar/Left");
-    //us[1] = new DistanceSensor("Sonar/Right");
-    int i;
-    for (i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++) {
       us[i].enable(timeStep);
     }
     
@@ -83,19 +80,16 @@ public class SensorController {
     handWave = new Motion(pfad + "HandWave.motion");
     forWard = new Motion(pfad + "Gehen50.motion");
     gehen = new Motion(pfad + "Gehen50Anfang.motion");
-    sideStepRight = new Motion(pfad + "SideStepRight.motion");
-    turnLeft = new Motion(pfad + "TurnLeft40.motion");
+    turnLeft40 = new Motion(pfad + "TurnLeft40.motion");
     turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
     turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
-    anfall = new Motion(pfad + "Anfall.motion");
-    up = new Motion(pfad + "StandUpFromFront.motion");
+    standUpFromFront = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
 
   static void printUltrasoundSensors() {
     double dist[] = new double[2];
-    int i;
-    for (i = 0; i < 2; i++)
+    for (int i = 0; i < 2; i++)
       dist[i] = us[i].getValue();
   
     System.out.println("-----ultrasound sensors-----");
@@ -125,7 +119,7 @@ public class SensorController {
     }
     
     if (hindernis) {
-      //startMotion(turnLeft);
+      //startMotion(turnLeft40);
       startMotion(turnLeft60);
     } else {
       startMotion(forWard);
