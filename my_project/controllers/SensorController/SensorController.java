@@ -8,6 +8,7 @@ public class SensorController {
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
   static int[] imageTop, imageBottom;
   static double[] iu;
+  static double[] acc;
   
   // simulated devices
   static InertialUnit inertialUnit;
@@ -21,7 +22,7 @@ public class SensorController {
   static LED led; //led
   
   // motion file handles
-  static Motion forWard, gehen, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
+  static Motion forwards, forwards50, gehen50, gehen50Anfang, turnLeft40, turnLeft60, turnLeft90, turnLeft180, handWave, standUpFromFront, bauch;
 
   static void findAndEnableDevices() {
     //Accelerometer
@@ -72,10 +73,11 @@ public class SensorController {
     String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
     
     handWave = new Motion(pfad + "HandWave.motion");
-    forWard = new Motion(pfad + "Gehen50.motion");
-    gehen = new Motion(pfad + "Gehen50Anfang.motion");
+    gehen50 = new Motion(pfad + "Gehen50.motion");
+    gehen50Anfang = new Motion(pfad + "Gehen50Anfang.motion");
     turnLeft40 = new Motion(pfad + "TurnLeft40.motion");
     turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
+    turnLeft90 = new Motion(pfad + "TurnLeft90.motion");
     turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
     standUpFromFront = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
@@ -88,6 +90,10 @@ public class SensorController {
   
     System.out.println("-----ultrasound sensors-----");
     System.out.print("left: " + dist[0] +" m, right " + dist[1] + "m\n");
+  }
+  
+  static void printAccelerometer() {
+    System.out.println("X:" + acc[0] + "\tY:" + acc[1] + "\tZ:" + acc[2]);
   }
   */
   
@@ -122,19 +128,21 @@ public class SensorController {
     //double fs[] = new double[2];
     
     for (int sensor = 0; sensor < 2; sensor++) {
-      if (dist[sensor] < 0.50) hindernis = true; // Prüft beide Sensoren auf Hindernisse
+      if (dist[sensor] < 0.4) hindernis = true; // Prüft beide Sensoren auf Hindernisse
     }
     
-    if (hindernis) startMotion(turnLeft60);
-    else startMotion(forWard);
+    if (hindernis) {
+      startMotion(turnLeft90);
+      }
+    else startMotion(gehen50);
   }
  
   public static void main(String[] args) {
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
-    
     startMotion(handWave);
+    startMotion(gehen50Anfang);
     //camCheck();
 
     while (robot.step(timeStep) != -1) {
