@@ -24,19 +24,23 @@ public class SensorController {
   static Motion forWard, gehen, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
 
   static void findAndEnableDevices() {
-    // inertialUnit
-    inertialUnit = new InertialUnit("InertialUnit");
-    inertialUnit.enable(timeStep);
-    
+    //Accelerometer
+    accelerometer = new Accelerometer("accelerometer");
+    accelerometer.enable(timeStep);
     // camera
     cameraTop = new Camera("CameraTop");
     cameraBottom = new Camera("CameraBottom");
     cameraTop.enable(4*timeStep);
     cameraBottom.enable(4*timeStep);
-    
-    //Accelerometer
-    accelerometer = new Accelerometer("accelerometer");
-    accelerometer.enable(timeStep);
+    // ultrasound sensors
+    for (int i = 0; i < 2; i++) {
+      us[i].enable(timeStep);
+    }
+
+    /*
+    // inertialUnit
+    inertialUnit = new InertialUnit("InertialUnit");
+    inertialUnit.enable(timeStep);
     
     //GPS
     gps = new GPS("gps");
@@ -46,10 +50,8 @@ public class SensorController {
     gyro = new Gyro("gyro");
     gyro.enable(timeStep);
     
-    // ultrasound sensors
-    for (int i = 0; i < 2; i++) {
-      us[i].enable(timeStep);
-    }
+    //keyboard
+    keyboard.enable(10 * timeStep);
     
     //foot bumpers
     lfoot_lbumper = new TouchSensor("LFoot/Bumper/Left");
@@ -60,15 +62,7 @@ public class SensorController {
     lfoot_rbumper.enable(timeStep);
     rfoot_lbumper.enable(timeStep);
     rfoot_rbumper.enable(timeStep);
-    
-    //keyboard
-    keyboard.enable(10 * timeStep);
-  }
-  
-  static void camCheck(){
-    imageTop = cameraTop.getImage();
-    imageBottom = cameraBottom.getImage();
-    System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
+    */
   }
   
   // load motion files
@@ -86,7 +80,7 @@ public class SensorController {
     standUpFromFront = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
-
+ /* nicht nötig, da Webots eigens dafür die Werte in einem Fenster anzeigen kann
   static void printUltrasoundSensors() {
     double dist[] = new double[2];
     for (int i = 0; i < 2; i++)
@@ -95,6 +89,24 @@ public class SensorController {
     System.out.println("-----ultrasound sensors-----");
     System.out.print("left: " + dist[0] +" m, right " + dist[1] + "m\n");
   }
+  */
+  
+   /* Für Debug Zwecke 
+  static void camCheck(){
+    imageTop = cameraTop.getImage();
+    imageBottom = cameraBottom.getImage();
+    System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
+  }
+  
+  
+    static void gefallen() {
+    int ll = (int) lfoot_lbumper.getValue();
+    int lr = (int) lfoot_rbumper.getValue();
+    int rl = (int) rfoot_lbumper.getValue();
+    int rr = (int) rfoot_rbumper.getValue();
+    System.out.println("Links L: " + ll + " R: " + lr + "\nRechts L: " + rl + " R: " + rr);
+  }
+  */
   
   static void startMotion(Motion motion) {
     //start new motion
@@ -105,44 +117,19 @@ public class SensorController {
   }
 
   static void move() {
-    double dist[] = new double[2];
-    double fs[] = new double[2];
-    dist[0] = us[0].getValue();
-    dist[1] = us[1].getValue();
-    
     boolean hindernis = false; // Prüfung ob Drehung nötig
-
+    double dist[] = {us[0].getValue(), us[1].getValue()};
+    //double fs[] = new double[2];
+    
     for (int sensor = 0; sensor < 2; sensor++) {
-      if (dist[sensor] < 0.50) { // Prüft beide Sensoren auf Hindernisse
-        hindernis = true;
-      }
+      if (dist[sensor] < 0.50) hindernis = true; // Prüft beide Sensoren auf Hindernisse
     }
     
-    if (hindernis) {
-      //startMotion(turnLeft40);
-      startMotion(turnLeft60);
-    } else {
-      startMotion(forWard);
-    }
-  }
-
-  static void runCommand(int key) {
-    switch(key) {
-      case 'a': printUltrasoundSensors(); break;
-      case 3: printUltrasoundSensors(); break;
-    }
+    if (hindernis) startMotion(turnLeft60);
+    else startMotion(forWard);
   }
  
-  static void gefallen() {
-    int ll = (int) lfoot_lbumper.getValue();
-    int lr = (int) lfoot_rbumper.getValue();
-    int rl = (int) rfoot_lbumper.getValue();
-    int rr = (int) rfoot_rbumper.getValue();
-    System.out.println("Links L: " + ll + " R: " + lr + "\nRechts L: " + rl + " R: " + rr);
-  }
-  
   public static void main(String[] args) {
-    //robot.setMode(Robot.MODE_REMOTE_CONTROL, s);
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
@@ -152,7 +139,6 @@ public class SensorController {
 
     while (robot.step(timeStep) != -1) {
       //gefallen();
-      //printUltrasoundSensors();
       move();
       //iu = inertialUnit.getRollPitchYaw();
     };

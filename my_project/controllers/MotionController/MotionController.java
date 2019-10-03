@@ -13,7 +13,7 @@ public class MotionController {
   static Accelerometer accelerometer;
   
   // motion file handles
-  static Motion forWard, gehen, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
+  static Motion forwards, forwards50, gehen50, gehen50Anfang, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
 
   static void findAndEnableDevices() {
     //Accelerometer
@@ -32,9 +32,11 @@ public class MotionController {
     file = (file.getParentFile().getParentFile());
     String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
     
+    forwards = new Motion(pfad + "Forwards.motion");
+    forwards50 = new Motion(pfad + "Forwards50.motion");
     handWave = new Motion(pfad + "HandWave.motion");
-    forWard = new Motion(pfad + "Gehen50.motion");
-    gehen = new Motion(pfad + "Gehen50Anfang.motion");
+    gehen50 = new Motion(pfad + "Gehen50.motion");
+    gehen50Anfang = new Motion(pfad + "Gehen50Anfang.motion");
     turnLeft40 = new Motion(pfad + "TurnLeft40.motion");
     turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
     turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
@@ -43,8 +45,8 @@ public class MotionController {
   }
   
   static void startMotion(Motion motion) {
-    if (!currentlyPlaying.isOver()) currentlyPlaying.stop();
     //start new motion
+    currentlyPlaying = motion;
     motion.play();
     do {
       robot.step(timeStep);
@@ -57,22 +59,21 @@ public class MotionController {
   }
 
   static void move() {
-    double dist[] = new double[2];
-    double fs[] = new double[2];
-    dist[0] = us[0].getValue();
-    dist[1] = us[1].getValue();
-    
     boolean hindernis = false; // Prüfung ob Drehung nötig
+    double dist[] = {us[0].getValue(), us[1].getValue()};
 
     for (int sensor = 0; sensor < 2; sensor++) {
-      if (dist[sensor] < 0.50) { // Prüft beide Sensoren auf Hindernisse
+      if (dist[sensor] < 0.48) { // Prüft beide Sensoren auf Hindernisse
         hindernis = true;
       }
     }
     if (hindernis) {
+      //stoppe momentane Motion
+      currentlyPlaying.stop();
+      
       startMotion(turnLeft60);
     } else {
-      startMotion(forWard);
+      startMotion(forwards50);
     }
   }
   
@@ -88,7 +89,8 @@ public class MotionController {
       acc = accelerometer.getValues();
  
       if (currentlyPlaying == null || currentlyPlaying.isOver()) {
-        startMotion(standUpFromFront);
+        //startMotion(standUpFromFront);
+        move();
       } else {
         move();
       }
