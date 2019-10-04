@@ -21,7 +21,7 @@ public class SensorController {
   static LED led; //led
   
   // motion file handles
-  static Motion aufstehen, forWard, gehen, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
+  static Motion aufstehen, stand, standToSit, sitToStand, forWard, gehen, turnLeft10, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
 
   static void findAndEnableDevices() {
     // inertialUnit
@@ -88,9 +88,13 @@ public class SensorController {
     String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
     
     aufstehen = new Motion(pfad + "Aufstehen.motion");
+    stand = new Motion(pfad + "Stand.motion");
+    standToSit = new Motion(pfad + "StandToSit.motion");
+    sitToStand = new Motion(pfad + "SitToStand.motion");
     handWave = new Motion(pfad + "HandWave.motion");
     forWard = new Motion(pfad + "Gehen50.motion");
     gehen = new Motion(pfad + "Gehen50Anfang.motion");
+    turnLeft10 = new Motion(pfad + "TurnLeft10.motion");
     turnLeft40 = new Motion(pfad + "TurnLeft40.motion");
     turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
     turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
@@ -130,8 +134,12 @@ public class SensorController {
     }
     
     if (hindernis) {
-      //startMotion(turnLeft40);
-      startMotion(turnLeft60);
+      startMotion(turnLeft40);
+      startMotion(turnLeft40);
+      startMotion(sitToStand);
+      startMotion(turnLeft10);
+      startMotion(standToSit);
+      //startMotion(turnLeft60);
     } else {
       startMotion(forWard);
     }
@@ -157,6 +165,9 @@ public class SensorController {
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
+    
+    startMotion(stand);
+    startMotion(standToSit);
     
     //camCheck();
 
