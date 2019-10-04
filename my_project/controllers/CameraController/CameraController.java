@@ -1,7 +1,7 @@
 import com.cyberbotics.webots.controller.*;
 import java.io.File;
 
-public class SensorController {
+public class CameraController {
   static Robot robot = new Robot();
   static CameraRecognitionObject cameraRecognitionObject = new CameraRecognitionObject();
   static Keyboard keyboard = new Keyboard();
@@ -65,21 +65,7 @@ public class SensorController {
     keyboard.enable(10 * timeStep);
   }
   
-  static void camCheck(){
-    imageTop = cameraTop.getImage();
-    imageBottom = cameraBottom.getImage();
-    //System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
-    /*
-    for (int i=0; i < imageTop.length; i++) {
-      int pixel = imageTop[i];
-      int r = Camera.pixelGetRed(pixel);
-      int g = Camera.pixelGetGreen(pixel);
-      int b = Camera.pixelGetBlue(pixel);
-      System.out.println("red=" + r + " green=" + g + " blue=" + b);
-    }
-    */
-    
-  }
+
   
   // load motion files
   public static void loadMotionFiles() {
@@ -152,18 +138,34 @@ public class SensorController {
     System.out.println("Links L: " + ll + " R: " + lr + "\nRechts L: " + rl + " R: " + rr);
   }
   
+  static void camCheck(){
+    imageTop = cameraTop.getImage();
+    imageBottom = cameraBottom.getImage();
+    //System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
+    /*
+    for (int i=0; i < imageTop.length; i++) {
+      int pixel = imageTop[i];
+      int r = Camera.pixelGetRed(pixel);
+      int g = Camera.pixelGetGreen(pixel);
+      int b = Camera.pixelGetBlue(pixel);
+      System.out.println("red=" + r + " green=" + g + " blue=" + b);
+    }
+    */
+ 
+  }
+  
   public static void main(String[] args) {
     //robot.setMode(Robot.MODE_REMOTE_CONTROL, s);
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
     
-    //camCheck();
+    camCheck();
 
     while (robot.step(timeStep) != -1) {
       //gefallen();
       //printUltrasoundSensors();
-      move();
+      //move();
       //iu = inertialUnit.getRollPitchYaw();
     };
   }
