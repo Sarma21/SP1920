@@ -9,13 +9,14 @@ public class SensorController {
   static int[] imageTop, imageBottom;
   static double[] iu;
   static double[] acc;
+  static Motion currentlyPlaying = null;
   
   // simulated devices
   static InertialUnit inertialUnit;
   static Camera cameraTop, cameraBottom; //cameras
   static TouchSensor lfoot_lbumper, lfoot_rbumper;  // left foot bumpers
   static TouchSensor rfoot_lbumper, rfoot_rbumper;  // right foot bumpers
-  static DistanceSensor[] us = {new DistanceSensor("Sonar/Left"), new DistanceSensor("Sonar/Right")}; // ultrasound sensors
+  static DistanceSensor[] sonar = {new DistanceSensor("Sonar/Left"), new DistanceSensor("Sonar/Right")}; // ultrasound sensors
   static Accelerometer accelerometer;
   static GPS gps; //gps
   static Gyro gyro; //gyro
@@ -34,9 +35,8 @@ public class SensorController {
     cameraTop.enable(4*timeStep);
     cameraBottom.enable(4*timeStep);
     // ultrasound sensors
-    for (int i = 0; i < 2; i++) {
-      us[i].enable(timeStep);
-    }
+    sonar[0].enable(timeStep);
+    sonar[1].enable(timeStep);
 
     /*
     // inertialUnit
@@ -82,28 +82,13 @@ public class SensorController {
     standUpFromFront = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
- /* nicht nötig, da Webots eigens dafür die Werte in einem Fenster anzeigen kann
-  static void printUltrasoundSensors() {
-    double dist[] = new double[2];
-    for (int i = 0; i < 2; i++)
-      dist[i] = us[i].getValue();
-  
-    System.out.println("-----ultrasound sensors-----");
-    System.out.print("left: " + dist[0] +" m, right " + dist[1] + "m\n");
-  }
-  
-  static void printAccelerometer() {
-    System.out.println("X:" + acc[0] + "\tY:" + acc[1] + "\tZ:" + acc[2]);
-  }
-  */
-  
+
    /* Für Debug Zwecke 
   static void camCheck(){
     imageTop = cameraTop.getImage();
     imageBottom = cameraBottom.getImage();
     System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
   }
-  
   
     static void gefallen() {
     int ll = (int) lfoot_lbumper.getValue();
@@ -115,24 +100,29 @@ public class SensorController {
   */
   
   static void startMotion(Motion motion) {
+    currentlyPlaying = motion;
     //start new motion
-    motion.play();
+    currentlyPlaying.play();
     do {
       robot.step(timeStep);
-    } while (!motion.isOver());
+    } while (!currentlyPlaying.isOver());
   }
 
   static void move() {
-    boolean hindernis = false; // Prüfung ob Drehung nötig
-    double dist[] = {us[0].getValue(), us[1].getValue()};
+    boolean hindernis = false;
+    double[] dist = {sonar[0].getValue(), sonar[1].getValue()};
     //double fs[] = new double[2];
     
     for (int sensor = 0; sensor < 2; sensor++) {
-      if (dist[sensor] < 0.4) hindernis = true; // Prüft beide Sensoren auf Hindernisse
+      if (dist[sensor] < 0.6) hindernis = true; // Prüft beide Sensoren auf Hindernisse
     }
     
+    //wenn Roboter vor einer Wand ist, dann stoppe momentane Motion
     if (hindernis) {
-      startMotion(turnLeft90);
+      currentlyPlaying.stop();
+      /* @TODO prüfe ob links frei ist
+      ...
+      */
       }
     else startMotion(gehen50);
   }

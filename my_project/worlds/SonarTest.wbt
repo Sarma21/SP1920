@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.06483205137124196 -0.9125025143063819 -0.4039009364925119 2.8657827349953853
-  position -2.1555221644723215 5.568755983660667 -4.795228403616181
+  orientation -0.3196902536124078 -0.8728833189560905 -0.36860935044221865 1.8620290304213238
+  position -3.097622199895829 3.5233679311560717 -1.348931345102047
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -28,7 +28,7 @@ Shelves {
   translation -2 0 0
 }
 Nao {
-  translation 0.85 0.33399999999999996 -2.14
+  translation 0.62 0.334 -2.14
   rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 -2.0943973071795865
   name "NAORed"
   controller "SensorController"
@@ -49,7 +49,7 @@ Wall {
   }
 }
 Wall {
-  translation 0.96 0 -0.65
+  translation 0.74 0 -0.4
   size 1 0.6 0.2
   appearance Roughcast {
     colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
@@ -58,7 +58,7 @@ Wall {
   }
 }
 Wall {
-  translation 1.74 0 -1.3499999999999999
+  translation 1.49 0 -1.35
   name "wall(2)"
   size 1 0.6 0.2
   appearance Roughcast {

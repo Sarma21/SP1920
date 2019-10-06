@@ -9,7 +9,7 @@ public class MotionController {
   static Motion currentlyPlaying = null;
   
   // simulated devices
-  static DistanceSensor[] us = {new DistanceSensor("Sonar/Left"), new DistanceSensor("Sonar/Right")}; // ultrasound sensors
+  static DistanceSensor[] sonar = {new DistanceSensor("Sonar/Left"), new DistanceSensor("Sonar/Right")}; // ultrasound sensors
   static Accelerometer accelerometer;
   
   // motion file handles
@@ -21,9 +21,8 @@ public class MotionController {
     accelerometer.enable(timeStep);
     
     // ultrasound sensors
-    for (int i = 0; i < 2; i++) {
-      us[i].enable(timeStep);
-    }
+    sonar[0].enable(timeStep);
+    sonar[1].enable(timeStep);
   }
   
   // load motion files
@@ -60,7 +59,7 @@ public class MotionController {
 
   static void move() {
     boolean hindernis = false; // Prüfung ob Drehung nötig
-    double dist[] = {us[0].getValue(), us[1].getValue()};
+    double dist[] = {sonar[0].getValue(), sonar[1].getValue()};
 
     for (int sensor = 0; sensor < 2; sensor++) {
       if (dist[sensor] < 0.48) { // Prüft beide Sensoren auf Hindernisse
