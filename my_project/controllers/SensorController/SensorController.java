@@ -83,12 +83,13 @@ public class SensorController {
     bauch = new Motion(pfad + "bauch.motion");
   }
 
-   /* Für Debug Zwecke 
+   
   static void camCheck(){
     imageTop = cameraTop.getImage();
     imageBottom = cameraBottom.getImage();
     System.out.println("imgTop: " + imageTop.length + "\nimgBottom: " + imageBottom.length);
   }
+  /* Für Debug Zwecke 
   
     static void gefallen() {
     int ll = (int) lfoot_lbumper.getValue();
@@ -133,7 +134,7 @@ public class SensorController {
     loadMotionFiles();
     startMotion(handWave);
     startMotion(gehen50Anfang);
-    //camCheck();
+    camCheck();
 
     while (robot.step(timeStep) != -1) {
       //gefallen();
