@@ -47,18 +47,17 @@ public class StandUpTest {
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
-    startMotion(handWave);
-    startMotion(forwards50);
+    //startMotion(forwards50);
 
     while (robot.step(timeStep) != -1) {
       acc = accelerometer.getValues();
-      //Bei welchen acc werten ist es fallen?
+      //Bei einem "Sturz" von von 0.05 m steht der Roboter erst auf.
       if((currentlyPlaying == null || currentlyPlaying.isOver()) && acc[0] > acc[1] && acc[0] > acc[2] && acc[0] < -5){
         System.out.println("currentlyPlaying == null");
         startMotion(standUpFromFront);
       } else {
         //laufe weiter
-        startMotion(forwards50);
+        //startMotion(forwards50);
       }
       //move();
     };
