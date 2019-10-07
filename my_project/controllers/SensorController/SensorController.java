@@ -4,7 +4,6 @@ import java.io.File;
 public class SensorController {
   static Robot robot = new Robot();
   static CameraRecognitionObject cameraRecognitionObject = new CameraRecognitionObject();
-  static Keyboard keyboard = new Keyboard();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
   static int[] imageTop, imageBottom;
   static double[] iu;
@@ -51,9 +50,6 @@ public class SensorController {
     gyro = new Gyro("gyro");
     gyro.enable(timeStep);
     
-    //keyboard
-    keyboard.enable(10 * timeStep);
-    
     //foot bumpers
     lfoot_lbumper = new TouchSensor("LFoot/Bumper/Left");
     lfoot_rbumper = new TouchSensor("LFoot/Bumper/Right");
@@ -71,7 +67,6 @@ public class SensorController {
     File file = new File(System.getProperty("user.dir"));
     file = (file.getParentFile().getParentFile());
     String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
-    
     handWave = new Motion(pfad + "HandWave.motion");
     gehen50 = new Motion(pfad + "Gehen50.motion");
     gehen50Anfang = new Motion(pfad + "Gehen50Anfang.motion");
@@ -132,14 +127,13 @@ public class SensorController {
     // initialize stuff
     findAndEnableDevices();
     loadMotionFiles();
+    
     startMotion(handWave);
+    //camCheck();
     startMotion(gehen50Anfang);
-    camCheck();
 
     while (robot.step(timeStep) != -1) {
-      //gefallen();
       move();
-      //iu = inertialUnit.getRollPitchYaw();
     };
   }
 }

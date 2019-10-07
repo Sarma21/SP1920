@@ -1,0 +1,145 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.07765999322656035 -0.9958409192481589 -0.0476423026629982 1.2212506860932495
+  position -2.3601210557305734 1.1098918060739942 1.01636867419518
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+  texture "dawn_cloudy_empty"
+}
+RectangleArena {
+  floorSize 5 5
+}
+Cart {
+  hidden translation_11 0 0.14 0
+  hidden translation_12 0 -0.14 0
+  hidden translation_15 0 0.14 0
+  hidden translation_16 0 -0.14 0
+  translation -2.8747048648199158e-05 -0.00031059302450486825 0.9500674309187728
+  rotation -0.010924461962910787 0.053599846532616395 -0.9985027353905951 0.0003367225308648396
+}
+Tray {
+  translation -0.8499999999939236 -4.096655996815857e-05 -0.32999999999805724
+  rotation 0.12534896414555285 0.9141964512597229 -0.3853991251829277 -5.9998130690178e-10
+}
+Shelves {
+  translation -2 0 0
+}
+Nao {
+  hidden translation_11 0 0 0.1265
+  hidden rotation_11 0 1 0 0
+  hidden translation_18 0 -0.098 0.1
+  hidden rotation_18 1.5595448998612864e-08 0.9999999999999997 1.8515635199591358e-08 1.3999965002041022
+  hidden translation_19 0.105 -0.015 0
+  hidden rotation_19 0.9999999999999999 0 0 5.960464477539063e-08
+  hidden translation_20 0 0 0
+  hidden rotation_20 0 0 1 6.664001874625056e-08
+  hidden translation_21 0.05595 0 0
+  hidden rotation_21 0.9999999999999999 0 0 2.9802322387695313e-08
+  hidden translation_22 0.069 -0.013 -0.005
+  hidden rotation_22 0 1 0 0.9599999985044306
+  hidden translation_23 0.014 0 0
+  hidden rotation_23 0 1 0 0.9599999992408148
+  hidden translation_24 0.014 0 0
+  hidden rotation_24 0 1 0 0.9599999999262533
+  hidden translation_25 0.069 0.013 -0.005
+  hidden rotation_25 0 1 0 0.9599999985044363
+  hidden translation_26 0.014 0 0
+  hidden rotation_26 0 1 0 0.9599999992408292
+  hidden translation_27 0.014 0 0
+  hidden rotation_27 0 1 0 0.9599999999263096
+  hidden translation_28 0.049 0 -0.026
+  hidden rotation_28 0 1 0 0
+  hidden translation_29 0.014 0 0
+  hidden rotation_29 0 -0.9999999999999999 0 0.9599999998418606
+  hidden translation_30 0 0.098 0.1
+  hidden rotation_30 -1.6734006761222668e-08 0.9999999999999998 -1.7999315263045664e-08 1.4979700523410084
+  hidden translation_31 0.105 0.015 0
+  hidden rotation_31 1 0 0 2.9802322387695313e-08
+  hidden translation_32 0 0 0
+  hidden rotation_32 0 0 -1 2.9802322387695313e-08
+  hidden translation_33 0.05595 0 0
+  hidden rotation_33 1 0 0 0
+  hidden translation_34 0.069 -0.013 -0.005
+  hidden rotation_34 0 1 0 0.9599999984635607
+  hidden translation_35 0.014 0 0
+  hidden rotation_35 0 0.9999999999999999 0 0.9599999992725039
+  hidden translation_36 0.014 0 0
+  hidden rotation_36 0 1 0 0.959999999942166
+  hidden translation_37 0.069 0.013 -0.005
+  hidden rotation_37 0 0.9999999999999999 0 0.9599999984636933
+  hidden translation_38 0.014 0 0
+  hidden rotation_38 0 1 0 0.9599999992726823
+  hidden translation_39 0.014 0 0
+  hidden rotation_39 0 0.9999999999999999 0 0.9599999999421617
+  hidden translation_40 0.049 0 -0.026
+  hidden translation_41 0.014 0 0
+  hidden rotation_41 0 -1 0 0.959999999849832
+  hidden translation_42 0 -0.05 -0.085
+  hidden rotation_42 0 -0.7071067811865475 -0.7071067811865475 3.7223088731756253e-07
+  hidden translation_43 0 0 0
+  hidden rotation_43 -1 0 0 2.1696418193818693e-07
+  hidden translation_44 0 0 0
+  hidden rotation_44 0 0.9999999999999999 0 3.576278686523442e-07
+  hidden translation_45 0 0 -0.1
+  hidden rotation_45 0 -1 0 3.345302391148161e-07
+  hidden translation_46 0 0 -0.1029
+  hidden rotation_46 0 1 0 2.950279395762585e-07
+  hidden translation_47 0 0 0
+  hidden rotation_47 -1 0 0 1.8371385344770487e-07
+  hidden translation_52 0 0.05 -0.085
+  hidden rotation_52 0 -0.7071067811865476 0.7071067811865476 3.7223088731756253e-07
+  hidden translation_53 0 0 0
+  hidden rotation_53 1 0 0 2.1696418193818693e-07
+  hidden translation_54 0 0 0
+  hidden rotation_54 0 1 0 3.513641989991549e-07
+  hidden translation_55 0 0 -0.1
+  hidden rotation_55 0 -1 0 3.31864617039563e-07
+  hidden translation_56 0 0 -0.1029
+  hidden rotation_56 0 1 0 2.965293637235823e-07
+  hidden translation_57 0 0 0
+  hidden rotation_57 1 0 0 1.8371385344770487e-07
+  translation 0.5906701497856296 0.9325665559231179 -0.40414258228440303
+  rotation 0.5610051680816678 0.5863099191406471 0.5843918891488379 -2.1221372836945287
+  name "NAORed"
+  controller "StandUpTest"
+}
+BallCandy {
+  translation 0 0.032248863998998394 1.3199999999999998
+}
+Wall {
+  translation 2.1 0 -0.76
+  rotation 0 -1 0 1.5707963603591737
+  name "wall(1)"
+  size 1 0.6 0.2
+  appearance Roughcast {
+    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
+    textureTransform TextureTransform {
+      scale 1 2.4
+    }
+  }
+}
+Wall {
+  translation 0.74 0 -0.4
+  size 1 0.6 0.2
+  appearance Roughcast {
+    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
+    textureTransform TextureTransform {
+    }
+  }
+}
+Wall {
+  translation 1.49 0 -1.35
+  name "wall(2)"
+  size 1 0.6 0.2
+  appearance Roughcast {
+    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
+    textureTransform TextureTransform {
+      scale 1 2.4
+    }
+  }
+}
