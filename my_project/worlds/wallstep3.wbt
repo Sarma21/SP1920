@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.029251178293318768 0.9985016218623638 0.04624802381379881 1.8768831870481126
-  position 0.8328573687636185 0.8220235191201634 -2.2377993201265785
+  orientation 0.09073886405983735 -0.9876228713367144 -0.12793561881569188 4.412125772189561
+  position 2.2000630449604297 0.6488670182188178 -0.4531655660727078
 }
 TexturedBackground {
   texture "noon_park_empty"
@@ -14,28 +14,9 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 5 5
 }
-Ball {
-  translation 0.24 0.24991367199999995 1.44
-  color 1 0 0
-  radius 0.1
-}
-Wall {
-  translation 0.09999999999999999 -0.45999999999999996 1.4
-  rotation 0 1 0 1.5707959999999999
-  name "wall(3)"
-  size 1 0.6 0.2
-  appearance Roughcast {
-    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
-    textureTransform TextureTransform {
-    }
-  }
-}
-StraightStairs {
-  translation 0.19999999999999998 0 1.43
-}
 Robot {
-  translation -1.4541498156960322 0.31484319478077993 -1.2966067441719713
-  rotation 0.8961312498517383 -0.2952803608479659 0.3312978894237882 -1.3659415034760058
+  translation 0.33877561907272846 0.3011635587270484 0.06769711650159844
+  rotation 0.9979874718974876 -0.043616362553192116 -0.04602845699444723 -1.4099031818676713
   children [
     DEF BODY_SLOT Group {
     }
@@ -78,7 +59,7 @@ Robot {
         baseColor 0.878 0 0.204
         baseColorMap ImageTexture {
           url [
-            "/home/pc/Downloads/webots/projects/robots/softbank/nao/protos/textures/chest_button.png"
+            "C:/Users/Gergerdt/AppData/Local/Programs/Webots/projects/robots/softbank/nao/protos/textures/chest_button.png"
           ]
         }
         roughness 0.1
@@ -241,12 +222,12 @@ Robot {
     }
     DEF HeadYaw Hinge2Joint {
       jointParameters HingeJointParameters {
-        position -4.528967399025666e-08
+        position 8.739625578794427e-09
         axis 0 0 1
         anchor 0 0 0.1265
       }
       jointParameters2 JointParameters {
-        position 0.5000006359412628
+        position 0.2371550585833689
         axis 0 1 0
       }
       device [
@@ -275,7 +256,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0 0.1265
-        rotation 2.2644836995128233e-08 0.9999999999999958 -8.868425070702119e-08 0.5000006359412645
+        rotation -4.36981278939721e-09 0.9999999999999992 3.667906404526786e-08 0.23715505858336886
         children [
           DEF HEAD_SLOT Transform {
             translation 0 0 0.05353
@@ -427,7 +408,7 @@ Robot {
             appearance PBRAppearance {
               baseColorMap ImageTexture {
                 url [
-                  "/home/pc/Downloads/webots/projects/robots/softbank/nao/protos/textures/ear.jpg"
+                  "C:/Users/Gergerdt/AppData/Local/Programs/Webots/projects/robots/softbank/nao/protos/textures/ear.jpg"
                 ]
               }
               roughness 0.8
@@ -483,18 +464,18 @@ Robot {
             4.09863e-05 -3.61413e-05 8.73519e-06
           ]
         }
-        linearVelocity -3.2940634372672895e-06 -5.628066257529273e-07 5.766318016890312e-06
-        angularVelocity 6.457640667250063e-06 -4.159436801388549e-05 5.06456608142733e-07
+        linearVelocity -5.096025239373578e-06 2.6121212006233856e-07 2.0546808262218643e-06
+        angularVelocity -2.9282400860368393e-06 -3.7098254507824175e-05 2.05822832817718e-05
       }
     }
     DEF RShoulderPitch Hinge2Joint {
       jointParameters HingeJointParameters {
-        position 0.5000004889505061
+        position 2.0856698020462083
         axis 0 1 0
         anchor 0 -0.098 0.1
       }
       jointParameters2 JointParameters {
-        position -0.20000004719311235
+        position -0.14999997628892306
       }
       device [
         RotationalMotor {
@@ -521,8 +502,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0 -0.098 0.1
-        rotation -0.09297943082789481 0.926692705606475 -0.36413658813510025 0.5377389051316842
+        translation 0.008598668730092808 -0.10026018696428103 0.09519807986773852
+        rotation -0.07485825922374756 0.9962381224016457 -0.043655978967762826 2.088947097110221
         children [
           Transform {
             translation 0.005 0 0
@@ -574,7 +555,7 @@ Robot {
           }
           DEF RElbowYaw HingeJoint {
             jointParameters HingeJointParameters {
-              position 1.403374746565428e-07
+              position 2.3362545878598598e-07
               anchor 0.105 -0.015 0
             }
             device [
@@ -591,18 +572,17 @@ Robot {
             ]
             endPoint Solid {
               translation 0.105 -0.015 0
-              rotation 1 0 0 1.3978528260658475e-07
+              rotation 1 0 0 2.3276357876976306e-07
               children [
                 DEF RElbowRoll HingeJoint {
                   jointParameters HingeJointParameters {
-                    position 7.420099036524088e-07
+                    position 2.980872249081994e-07
                     axis 0 0 1
                   }
                   device [
                     RotationalMotor {
                       name "RElbowRoll"
                       maxVelocity 7.19407
-                      minPosition -3.0493552170600184e-07
                       maxPosition 1.54462
                       maxTorque 5
                     }
@@ -611,11 +591,11 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    rotation 0 0 1 7.420718430274012e-07
+                    rotation 0 0 1 2.980232238769534e-07
                     children [
                       DEF RWristYaw HingeJoint {
                         jointParameters HingeJointParameters {
-                          position -7.409319910885708e-08
+                          position -3.7216609200874756e-08
                           anchor 0.05595 0 0
                         }
                         device [
@@ -632,18 +612,18 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0.05595 0 0
-                          rotation -0.9999999999999999 0 0 7.300048299977715e-08
+                          rotation -1 0 0 4.2146848510894035e-08
                           children [
                             DEF RPhalanx1 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 3.5813146555881447e-10
+                                position 4.1098537698469975e-10
                                 axis 0 -1 0
                                 anchor 0.069 -0.013 -0.005
                               }
                               device [
                                 RotationalMotor {
                                   name "RPhalanx1"
-                                  minPosition -4.4278175403673737e-11
+                                  minPosition -2.2153834322580224e-11
                                   maxPosition 1
                                 }
                                 PositionSensor {
@@ -652,7 +632,7 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0.069 -0.013 -0.005
-                                rotation 0 1 0 0.9599999989603599
+                                rotation -3.001206460199212e-14 0.9999999999999999 -2.0660039719947373e-14 0.9599999951551424
                                 children [
                                   DEF HAND_SLOT Transform {
                                     rotation 0 -1 0 0.96
@@ -676,7 +656,7 @@ Robot {
                                   }
                                   DEF RPhalanx2 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 3.9593337245662686e-10
+                                      position 1.9982636266264925e-10
                                       axis 0 -1 0
                                       anchor 0.014 0 0
                                     }
@@ -691,12 +671,12 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 1 0 0.9599999959220277
+                                      rotation -1.0518503205601948e-14 1 -1.2682309618616064e-14 0.9599999969145272
                                       children [
                                         USE PHALANX_TRANS
                                         DEF RPhalanx3 HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 1.1267469303692382e-10
+                                            position 6.325821453098744e-12
                                             axis 0 -1 0
                                             anchor 0.014 0 0
                                           }
@@ -711,7 +691,7 @@ Robot {
                                           ]
                                           endPoint Solid {
                                             translation 0.014 0 0
-                                            rotation 0 1 0 0.959999998459145
+                                            rotation -2.043594906305473e-15 1 -3.471106055082124e-15 0.9599999997319416
                                             children [
                                               USE PHALANX_TRANS
                                             ]
@@ -721,8 +701,8 @@ Robot {
                                             physics DEF FINGER_PHYSICS Physics {
                                               density 200
                                             }
-                                            linearVelocity -7.1686708473192e-06 -1.2736032568117963e-06 4.096954142587826e-06
-                                            angularVelocity 7.877568426254866e-06 -4.1739660156119245e-05 7.935655168981778e-07
+                                            linearVelocity -4.321626671669868e-06 -1.8999044810575649e-06 -1.947643021488068e-06
+                                            angularVelocity -2.557202296365662e-06 -3.920976139712595e-05 2.0457733380989774e-05
                                           }
                                         }
                                       ]
@@ -730,8 +710,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity -7.255724455040146e-06 -1.2812115246663214e-06 4.558799996419159e-06
-                                      angularVelocity 7.877568444659083e-06 -4.173966013441781e-05 7.935654387776437e-07
+                                      linearVelocity -4.041917861364606e-06 -1.8248808627696585e-06 -1.7692537463762544e-06
+                                      angularVelocity -2.557202287162234e-06 -3.920976139424839e-05 2.045773343343479e-05
                                     }
                                   }
                                 ]
@@ -739,20 +719,20 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity -7.3780428339127265e-06 -1.2956089921849013e-06 5.011512298585991e-06
-                                angularVelocity 7.877568332026537e-06 -4.1739660279812516e-05 7.935656301458425e-07
+                                linearVelocity -3.891453282869621e-06 -1.5893050171445376e-06 -1.298956799991338e-06
+                                angularVelocity -2.5572023050363505e-06 -3.92097614017285e-05 2.045773343999933e-05
                               }
                             }
                             DEF RPhalanx4 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 3.581584723104433e-10
+                                position 4.109560492901725e-10
                                 axis 0 -1 0
                                 anchor 0.069 0.013 -0.005
                               }
                               device [
                                 RotationalMotor {
                                   name "RPhalanx4"
-                                  minPosition -4.4267819362379885e-11
+                                  minPosition -2.2149393430481723e-11
                                   maxPosition 1
                                 }
                                 PositionSensor {
@@ -761,12 +741,12 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0.069 0.013 -0.005
-                                rotation 0 0.9999999999999999 0 0.9599999989599585
+                                rotation -2.941100727383549e-14 1 -2.0660201135241707e-14 0.9599999951553084
                                 children [
                                   USE PHALANX_TRANS
                                   DEF RPhalanx5 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 3.958733429241259e-10
+                                      position 9.403567212228507e-11
                                       axis 0 -1 0
                                       anchor 0.014 0 0
                                     }
@@ -781,12 +761,12 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 1 0 0.9599999959222085
+                                      rotation -1.0217974535712235e-14 1 -1.280252105227793e-14 0.9599999987133624
                                       children [
                                         USE PHALANX_TRANS
                                         DEF RPhalanx6 HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 1.127127958010271e-10
+                                            position 6.323636647907945e-12
                                             axis 0 -1 0
                                             anchor 0.014 0 0
                                           }
@@ -801,7 +781,7 @@ Robot {
                                           ]
                                           endPoint Solid {
                                             translation 0.014 0 0
-                                            rotation 0 1 0 0.9599999984589401
+                                            rotation -1.9233834410178442e-15 0.9999999999999999 -4.958722935706791e-15 0.9599999997320551
                                             children [
                                               USE PHALANX_TRANS
                                             ]
@@ -809,8 +789,8 @@ Robot {
                                             contactMaterial "NAO finger material"
                                             boundingObject USE PHALANX_TRANS
                                             physics USE FINGER_PHYSICS
-                                            linearVelocity -6.1145980885101024e-06 -1.0699883812836667e-06 4.343032716658784e-06
-                                            angularVelocity 7.877568574432867e-06 -4.1739660151743994e-05 7.935650344414925e-07
+                                            linearVelocity -3.3315805478913656e-06 -2.04800938990826e-06 -2.107397334067428e-06
+                                            angularVelocity -2.5572022152500424e-06 -3.9209761430747355e-05 2.045773388431624e-05
                                           }
                                         }
                                       ]
@@ -818,8 +798,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity -6.20165142398223e-06 -1.0775966412189225e-06 4.804878628869146e-06
-                                      angularVelocity 7.87756856264031e-06 -4.1739660159911235e-05 7.935650704719516e-07
+                                      linearVelocity -3.0518717234007393e-06 -1.972985771114862e-06 -1.9290080617160736e-06
+                                      angularVelocity -2.5572022296132105e-06 -3.9209761428181604e-05 2.0457733768570106e-05
                                     }
                                   }
                                 ]
@@ -827,13 +807,13 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity -6.323969249825437e-06 -1.0919940836312667e-06 5.257591054285165e-06
-                                angularVelocity 7.877568368729733e-06 -4.1739660309174046e-05 7.935656291240921e-07
+                                linearVelocity -2.901407124938827e-06 -1.7374099243945089e-06 -1.4587111184088656e-06
+                                angularVelocity -2.557202326456738e-06 -3.9209761435389225e-05 2.0457733521658196e-05
                               }
                             }
                             DEF RPhalanx7 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 4.4894319454360306e-10
+                                position 1.7508217322293074e-11
                                 axis 0 1 0
                                 anchor 0.049 0 -0.026
                               }
@@ -852,7 +832,7 @@ Robot {
                                   USE PHALANX_TRANS
                                   DEF RPhalanx8 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 1.0243816787334762e-10
+                                      position 4.949433927483596e-11
                                       axis 0 1 0
                                       anchor 0.014 0 0
                                     }
@@ -867,7 +847,7 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 -1 0 0.9599999989147229
+                                      rotation 2.141934400015378e-15 -1 -4.154280492426966e-15 0.959999999219094
                                       children [
                                         USE PHALANX_TRANS
                                       ]
@@ -875,8 +855,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity -6.742085328086767e-06 -1.1830303094788854e-06 4.619862544503169e-06
-                                      angularVelocity 7.877568405539783e-06 -4.173966040813603e-05 7.935655518920735e-07
+                                      linearVelocity -3.668310869900593e-06 -1.7991380677717262e-06 -1.6727592138948707e-06
+                                      angularVelocity -2.5572023136507874e-06 -3.9209761407246446e-05 2.0457733247230685e-05
                                     }
                                   }
                                 ]
@@ -884,8 +864,8 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity -6.6974811702566255e-06 -1.1808868252341415e-06 4.287719777561577e-06
-                                angularVelocity 7.877568368569651e-06 -4.173966037683717e-05 7.935656301121306e-07
+                                linearVelocity -3.9296745297935344e-06 -1.7742361538223526e-06 -1.657273729933644e-06
+                                angularVelocity -2.5572023037217075e-06 -3.9209761395753436e-05 2.0457733323513666e-05
                               }
                             }
                             DEF MAIN_HAND_SHAPE Shape {
@@ -966,8 +946,8 @@ Robot {
                               5.71599e-06 -2.24744e-05 3.17771e-06
                             ]
                           }
-                          linearVelocity -6.959082787175382e-06 -1.2128261933952841e-06 5.200460569188777e-06
-                          angularVelocity 7.877568420685123e-06 -4.173966036626108e-05 7.935657222951379e-07
+                          linearVelocity -3.7725791785182844e-06 -1.0767799789219594e-06 -3.004247469116568e-07
+                          angularVelocity -2.55720230392983e-06 -3.9209761404435734e-05 2.045773335199894e-05
                         }
                       }
                       Shape {
@@ -1010,8 +990,8 @@ Robot {
                         2.33243e-06 -6.0117e-07 2.694e-08
                       ]
                     }
-                    linearVelocity -7.112507465810554e-06 -1.236308988405455e-06 4.297465849922397e-06
-                    angularVelocity 8.128337829051447e-06 -4.2229663466961314e-05 7.98292226467242e-07
+                    linearVelocity -4.990838452650235e-06 -4.739831171827145e-07 7.054244796026136e-07
+                    angularVelocity -2.350531560571501e-06 -3.8829354956657556e-05 2.0437234858888323e-05
                   }
                 }
               ]
@@ -1030,8 +1010,8 @@ Robot {
                   4.21e-09 4.319e-08 -1.84e-09
                 ]
               }
-              linearVelocity -7.002698526658555e-06 -1.1927529705511297e-06 3.6203546874310463e-06
-              angularVelocity 7.0631332921999974e-06 -4.277739057665729e-05 5.162401546486985e-07
+              linearVelocity -5.758150973348276e-06 5.8303126598972445e-09 1.4927697463318898e-06
+              angularVelocity -3.518135390762274e-06 -3.818403690873244e-05 2.0640767149213907e-05
             }
           }
         ]
@@ -1059,18 +1039,18 @@ Robot {
             -0.000126182 1.89718e-05 2.00601e-05
           ]
         }
-        linearVelocity -6.171953046373627e-06 -1.0298227536249239e-06 3.080236430795196e-06
-        angularVelocity 6.457569493979951e-06 -4.159460612162101e-05 5.067096627687623e-07
+        linearVelocity -5.978475646769723e-06 5.213394506358886e-07 2.393339441615942e-06
+        angularVelocity -2.928240037848698e-06 -3.70982519770529e-05 2.0582256188909795e-05
       }
     }
     DEF LShoulderPitch Hinge2Joint {
       jointParameters HingeJointParameters {
-        position 1.8999991863107621
+        position 0.8551253579721017
         axis 0 1 0
         anchor 0 0.098 0.1
       }
       jointParameters2 JointParameters {
-        position 0.0999996026865118
+        position 0.14999982860817337
       }
       device [
         RotationalMotor {
@@ -1098,7 +1078,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0.098 0.1
-        rotation 0.04994708010482824 0.9981129842411425 0.03571778098150607 1.901786010365753
+        rotation 0.07393668532677376 0.9839744888909625 0.16225773255736872 0.8673815504800346
         children [
           Transform {
             translation 0.005 0 0
@@ -1147,7 +1127,7 @@ Robot {
           }
           DEF LElbowYaw HingeJoint {
             jointParameters HingeJointParameters {
-              position 1.0273100835218277e-07
+              position 3.430928402228462e-07
               anchor 0.105 0.015 0
             }
             device [
@@ -1164,11 +1144,11 @@ Robot {
             ]
             endPoint Solid {
               translation 0.105 0.015 0
-              rotation 0.9999999999999999 0 0 1.032382731180714e-07
+              rotation 1 0 0 3.4369714840265545e-07
               children [
                 DEF LElbowRoll HingeJoint {
                   jointParameters HingeJointParameters {
-                    position -3.5354711563486803e-07
+                    position -4.533203939670653e-07
                     axis 0 0 1
                   }
                   device [
@@ -1176,7 +1156,7 @@ Robot {
                       name "LElbowRoll"
                       maxVelocity 7.19407
                       minPosition -1.54462
-                      maxPosition 3.049388845893553e-07
+                      maxPosition 2.8390928041353667e-09
                       maxTorque 5
                     }
                     PositionSensor {
@@ -1184,11 +1164,11 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    rotation 0 0 -1 3.5388297101968327e-07
+                    rotation 0 0 -1 4.5295608501346993e-07
                     children [
                       DEF LWristYaw HingeJoint {
                         jointParameters HingeJointParameters {
-                          position -3.7508862594095526e-08
+                          position 2.448201357069373e-08
                           anchor 0.05595 0 0
                         }
                         device [
@@ -1205,18 +1185,18 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0.05595 0 0
-                          rotation -1 0 0 4.2146848510894035e-08
+                          rotation 1 0 0 2.9802322387695313e-08
                           children [
                             DEF LPhalanx1 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 3.0075934530654195e-10
+                                position 3.230655727037545e-10
                                 axis 0 -1 0
                                 anchor 0.069 -0.013 -0.005
                               }
                               device [
                                 RotationalMotor {
                                   name "LPhalanx1"
-                                  minPosition -4.427565721846327e-11
+                                  minPosition -2.2114196007526872e-11
                                   maxPosition 1
                                 }
                                 PositionSensor {
@@ -1225,7 +1205,7 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0.069 -0.013 -0.005
-                                rotation 0 0.9999999999999999 0 0.9599999991466152
+                                rotation -2.8116789669264946e-14 1 -2.0499899589789294e-14 0.9599999958208736
                                 children [
                                   DEF HAND_SLOT Transform {
                                     rotation 0 -1 0 0.96
@@ -1249,7 +1229,7 @@ Robot {
                                   }
                                   DEF LPhalanx2 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 2.780007049216115e-10
+                                      position 2.564630425086843e-10
                                       axis 0 -1 0
                                       anchor 0.014 0 0
                                     }
@@ -1264,12 +1244,12 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 1 0 0.9599999958595831
+                                      rotation -1.1720617859682107e-14 1 -1.3944530015192937e-14 0.9599999965115755
                                       children [
                                         USE PHALANX_TRANS
                                         DEF LPhalanx3 HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 8.078173495436143e-11
+                                            position 5.6915483675850226e-11
                                             axis 0 -1 0
                                             anchor 0.014 0 0
                                           }
@@ -1284,7 +1264,7 @@ Robot {
                                           ]
                                           endPoint Solid {
                                             translation 0.014 0 0
-                                            rotation 0 0.9999999999999999 0 0.9599999984290719
+                                            rotation -2.404229302036292e-15 1 -3.1705773946402293e-15 0.9599999991977612
                                             children [
                                               USE PHALANX_TRANS
                                             ]
@@ -1294,8 +1274,8 @@ Robot {
                                             physics DEF FINGER_PHYSICS Physics {
                                               density 200
                                             }
-                                            linearVelocity 4.573890120381552e-06 4.240458573211283e-07 -4.319402005813233e-06
-                                            angularVelocity 2.3363463369088243e-06 -4.109818512846825e-05 -1.5896854152467571e-07
+                                            linearVelocity 6.4729272011371696e-06 1.768584528042344e-06 6.742912772324754e-06
+                                            angularVelocity -3.066887649595022e-06 -4.073592439978936e-05 1.9568736468782565e-05
                                           }
                                         }
                                       ]
@@ -1303,8 +1283,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity 4.749193992835921e-06 4.342759096785712e-07 -4.37729477308164e-06
-                                      angularVelocity 2.3363464423665862e-06 -4.109818476278588e-05 -1.589694300488136e-07
+                                      linearVelocity 6.569715942260334e-06 2.000786216241674e-06 7.2415608672446924e-06
+                                      angularVelocity -3.0668876300970806e-06 -4.0735924385314986e-05 1.956873643130946e-05
                                     }
                                   }
                                 ]
@@ -1312,20 +1292,20 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity 4.783288749181005e-06 4.348473530432858e-07 -4.0025463081253245e-06
-                                angularVelocity 2.336278543015692e-06 -4.109830240744775e-05 -1.5863986154739602e-07
+                                linearVelocity 6.323264338979178e-06 2.153601960498241e-06 7.521442805183914e-06
+                                angularVelocity -3.0668876952369504e-06 -4.073592441840938e-05 1.9568736300320003e-05
                               }
                             }
                             DEF LPhalanx4 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 3.007608186575895e-10
+                                position 3.230692167943912e-10
                                 axis 0 -1 0
                                 anchor 0.069 0.013 -0.005
                               }
                               device [
                                 RotationalMotor {
                                   name "LPhalanx4"
-                                  minPosition -4.4270865511113344e-11
+                                  minPosition -2.2120188535701997e-11
                                   maxPosition 1
                                 }
                                 PositionSensor {
@@ -1334,12 +1314,12 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0.069 0.013 -0.005
-                                rotation 0 1 0 0.959999999146456
+                                rotation -2.871777362477083e-14 0.9999999999999999 -2.09805400137558e-14 0.959999995820724
                                 children [
                                   USE PHALANX_TRANS
                                   DEF LPhalanx5 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 2.780105075280724e-10
+                                      position 2.564367310174337e-10
                                       axis 0 -1 0
                                       anchor 0.014 0 0
                                     }
@@ -1354,12 +1334,12 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 1 0 0.9599999958596274
+                                      rotation -1.1359983464604619e-14 1 -1.3163155488980647e-14 0.9599999965120881
                                       children [
                                         USE PHALANX_TRANS
                                         DEF LPhalanx6 HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 8.078568428779156e-11
+                                            position 5.689907570624265e-11
                                             axis 0 -1 0
                                             anchor 0.014 0 0
                                           }
@@ -1374,7 +1354,7 @@ Robot {
                                           ]
                                           endPoint Solid {
                                             translation 0.014 0 0
-                                            rotation 0 0.9999999999999999 0 0.9599999984288324
+                                            rotation -1.9233834410568495e-15 1 -3.997031217453688e-15 0.9599999991977786
                                             children [
                                               USE PHALANX_TRANS
                                             ]
@@ -1382,8 +1362,8 @@ Robot {
                                             contactMaterial "NAO finger material"
                                             boundingObject USE PHALANX_TRANS
                                             physics USE FINGER_PHYSICS
-                                            linearVelocity 5.56341454299523e-06 4.794357511930494e-07 -4.096466011345367e-06
-                                            angularVelocity 2.336346334607024e-06 -4.109818519170137e-05 -1.589683071338583e-07
+                                            linearVelocity 7.337296049316815e-06 1.6023105891970852e-06 6.532819846953175e-06
+                                            angularVelocity -3.0668876048691817e-06 -4.0735924492416834e-05 1.956873653602294e-05
                                           }
                                         }
                                       ]
@@ -1391,8 +1371,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity 5.73871867201322e-06 4.896657947886071e-07 -4.154358729667989e-06
-                                      angularVelocity 2.3363464574321463e-06 -4.10981848213511e-05 -1.5896920990840312e-07
+                                      linearVelocity 7.4340847961463444e-06 1.8345122764696802e-06 7.031467941278107e-06
+                                      angularVelocity -3.066887584224755e-06 -4.0735924505111554e-05 1.95687365492775e-05
                                     }
                                   }
                                 ]
@@ -1400,13 +1380,13 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity 5.772813932013441e-06 4.902372207560215e-07 -3.779610165830081e-06
-                                angularVelocity 2.3362784272828596e-06 -4.109830235994171e-05 -1.5863980870338044e-07
+                                linearVelocity 7.187633203893944e-06 1.9873280174405498e-06 7.311349875892141e-06
+                                angularVelocity -3.0668876966695826e-06 -4.073592439754977e-05 1.956873646425171e-05
                               }
                             }
                             DEF LPhalanx7 HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 3.1788472369003796e-10
+                                position 2.1955679961359685e-10
                                 axis 0 1 0
                                 anchor 0.049 0 -0.026
                               }
@@ -1425,7 +1405,7 @@ Robot {
                                   USE PHALANX_TRANS
                                   DEF LPhalanx8 HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 9.515359691980886e-11
+                                      position 6.495294989281575e-11
                                       axis 0 1 0
                                       anchor 0.014 0 0
                                     }
@@ -1440,7 +1420,7 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.014 0 0
-                                      rotation 0 -1 0 0.9599999988709953
+                                      rotation 1.6311824158483203e-15 -1 -3.442051040382252e-15 0.9599999991143393
                                       children [
                                         USE PHALANX_TRANS
                                       ]
@@ -1448,8 +1428,8 @@ Robot {
                                       contactMaterial "NAO finger material"
                                       boundingObject USE PHALANX_TRANS
                                       physics USE FINGER_PHYSICS
-                                      linearVelocity 5.127035899224579e-06 4.542443803557315e-07 -3.965497064210354e-06
-                                      angularVelocity 2.3362972668903943e-06 -4.1098268573243125e-05 -1.5873539242336604e-07
+                                      linearVelocity 6.757485567213109e-06 1.8357765445544757e-06 6.927955121930087e-06
+                                      angularVelocity -3.0668876607703036e-06 -4.0735924410391e-05 1.9568736347397397e-05
                                     }
                                   }
                                 ]
@@ -1457,8 +1437,8 @@ Robot {
                                 contactMaterial "NAO finger material"
                                 boundingObject USE PHALANX_TRANS
                                 physics USE FINGER_PHYSICS
-                                linearVelocity 4.933926938033569e-06 4.4233511172659924e-07 -3.7138713339717156e-06
-                                angularVelocity 2.3362774367272293e-06 -4.109830321148576e-05 -1.5863809506539208e-07
+                                linearVelocity 6.521767891544726e-06 1.6323854421777464e-06 6.467677797010965e-06
+                                angularVelocity -3.0668876524644247e-06 -4.073592444601914e-05 1.9568736378559007e-05
                               }
                             }
                             DEF MAIN_HAND_SHAPE Shape {
@@ -1539,8 +1519,8 @@ Robot {
                               5.71599e-06 -2.24744e-05 3.17771e-06
                             ]
                           }
-                          linearVelocity 4.771464399956814e-06 4.279364692122725e-07 -2.3553640734363363e-06
-                          angularVelocity 2.336277199118727e-06 -4.109830436623073e-05 -1.5863572646806432e-07
+                          linearVelocity 5.511787947290407e-06 1.8362891044300138e-06 6.735028226884044e-06
+                          angularVelocity -3.06688766572872e-06 -4.073592440166512e-05 1.956873642637006e-05
                         }
                       }
                       Shape {
@@ -1583,8 +1563,8 @@ Robot {
                         -2.34271e-06 7.459e-08 -2.655e-08
                       ]
                     }
-                    linearVelocity 3.966235586956409e-06 3.9902473830095935e-07 -2.8844041210113427e-07
-                    angularVelocity 2.9556922302097155e-06 -4.064439405172751e-05 1.2981711011610496e-07
+                    linearVelocity 3.9262977653658575e-06 1.0405193504707076e-06 4.8334410964951155e-06
+                    angularVelocity -3.5728067821803326e-06 -4.016954627070207e-05 1.982594753678641e-05
                   }
                 }
               ]
@@ -1601,8 +1581,8 @@ Robot {
                   4.21e-09 4.319e-08 -1.84e-09
                 ]
               }
-              linearVelocity 3.078587109338673e-06 3.471184088379016e-07 1.4512438898779793e-06
-              angularVelocity 4.75804128234279e-06 -4.283886137775687e-05 -2.8446190540386083e-07
+              linearVelocity 2.435315890497419e-06 4.2475411524698214e-07 3.4193741164463745e-06
+              angularVelocity -1.6628805869748514e-06 -3.8514832964956766e-05 1.9938967135990465e-05
             }
           }
         ]
@@ -1626,13 +1606,13 @@ Robot {
             9.6588e-05 3.57699e-07 3.29807e-05
           ]
         }
-        linearVelocity 1.3399890866035634e-06 1.4185060543568933e-07 3.4787889229630603e-06
-        angularVelocity 6.456198776977114e-06 -4.1594441885342386e-05 5.063451557228487e-07
+        linearVelocity 1.1276554104144558e-07 -1.5871096456786844e-07 2.038188667706899e-06
+        angularVelocity -2.928254396553019e-06 -3.709824367545211e-05 2.05822876086767e-05
       }
     }
     DEF RHipYawPitch HingeJoint {
       jointParameters HingeJointParameters {
-        position -7.1831598994260385e-06
+        position 2.1486409188428533e-06
         axis 0 0.707107 0.707107
         anchor 0 -0.05 -0.085
       }
@@ -1650,7 +1630,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 -0.05 -0.085
-        rotation 0 -0.7071067811865475 -0.7071067811865475 7.18316344754277e-06
+        rotation 0 0.7071067811865475 0.7071067811865475 2.148662706336594e-06
         children [
           Shape {
             appearance USE MAIN_SKIN_APP
@@ -1678,7 +1658,7 @@ Robot {
           }
           DEF RHipRoll HingeJoint {
             jointParameters HingeJointParameters {
-              position -0.4745701214405724
+              position -0.04455668454024836
             }
             device [
               RotationalMotor {
@@ -1693,7 +1673,7 @@ Robot {
               }
             ]
             endPoint Solid {
-              rotation -1 0 0 0.4745701214405724
+              rotation -0.9999999999999999 0 0 0.04455668454024414
               children [
                 DEF HIP_ROLL_CYL_TRANS Transform {
                   translation -0.019 0 0
@@ -1728,7 +1708,7 @@ Robot {
                 }
                 DEF RHipPitch HingeJoint {
                   jointParameters HingeJointParameters {
-                    position -1.0000038275215561
+                    position -0.6584472674141456
                     axis 0 1 0
                   }
                   device [
@@ -1744,7 +1724,7 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    rotation 0 -1 0 1.0000038275215564
+                    rotation 0 -1 0 0.6584472674141455
                     children [
                       Shape {
                         appearance USE MAIN_SKIN_APP
@@ -1772,7 +1752,7 @@ Robot {
                       }
                       DEF RKneePitch HingeJoint {
                         jointParameters HingeJointParameters {
-                          position 0.1943043492082206
+                          position 0.046580117235044516
                           axis 0 1 0
                           anchor 0 0 -0.1
                         }
@@ -1790,7 +1770,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0 0 -0.1
-                          rotation 0 1 0 0.19430434920822037
+                          rotation 0 1 0 0.046580117235042046
                           children [
                             Shape {
                               appearance USE MAIN_SKIN_APP
@@ -1832,7 +1812,7 @@ Robot {
                             }
                             DEF RAnklePitch HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 0.23508242285619468
+                                position 0.5252928338876411
                                 axis 0 1 0
                                 anchor 0 0 -0.1029
                               }
@@ -1850,7 +1830,7 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0 0 -0.1029
-                                rotation 0 1 0 0.23508242285619552
+                                rotation 0 1 0 0.5252928338876415
                                 children [
                                   DEF ANKLE_SHAPE Shape {
                                     appearance USE STRUCTURE_APP
@@ -1868,7 +1848,7 @@ Robot {
                                   }
                                   DEF RAnkleRoll HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 0.11787201758309392
+                                      position -0.09567566262246816
                                     }
                                     device [
                                       RotationalMotor {
@@ -1883,14 +1863,14 @@ Robot {
                                       }
                                     ]
                                     endPoint Solid {
-                                      rotation 1 0 0 0.11787201758309548
+                                      rotation -1 0 0 0.09567566262246717
                                       children [
                                         DEF RIGHT_FOOT_SLOT Transform {
                                           translation 0.0254 -0.00332 -0.03241
                                         }
                                         DEF RFsr TouchSensor {
-                                          translation 0.019989324576535683 -0.0069844442233140125 -0.04063979020547427
-                                          rotation 1.0545479829730734e-07 -4.4490783985063747e-07 0.9999999999998955 -3.141584775860093
+                                          translation 0.019995491552652234 -0.006992379184872027 -0.04082999674343723
+                                          rotation 2.1681491056056957e-06 4.3487274326274425e-07 0.9999999999975552 -3.141585746370757
                                           name "RFsr"
                                           contactMaterial "NAO foot material"
                                           boundingObject DEF FOOT_Box Box {
@@ -1902,8 +1882,8 @@ Robot {
                                           }
                                           type "force-3d"
                                           lookupTable []
-                                          linearVelocity 3.427924411123067e-08 2.1426360243259085e-06 1.1164010203680523e-09
-                                          angularVelocity -3.192057969647664e-05 2.3146980800796387e-06 -6.675338323468053e-06
+                                          linearVelocity 2.8081798291591835e-05 2.0166047783511075e-06 1.8864018614545534e-05
+                                          angularVelocity -5.008859560058979e-06 -2.6501674410612174e-05 1.4995614437132448e-05
                                         }
                                         Shape {
                                           appearance USE STRUCTURE_APP
@@ -2020,8 +2000,8 @@ Robot {
                                           5.87505e-06 0.000139133 -1.88492e-05
                                         ]
                                       }
-                                      linearVelocity -4.905635167723338e-07 1.5017903753028328e-06 2.1451708338724544e-07
-                                      angularVelocity -3.192882588545642e-05 2.461197447105718e-06 -6.678073875805373e-06
+                                      linearVelocity 2.4533606333961738e-05 2.0812104035386463e-06 1.729080290566704e-05
+                                      angularVelocity -4.9894666613669265e-06 -2.6552995286861058e-05 1.4954234293359242e-05
                                     }
                                   }
                                 ]
@@ -2040,8 +2020,8 @@ Robot {
                                     6.434e-08 3.87466e-06 -4.58e-09
                                   ]
                                 }
-                                linearVelocity -7.903309336740249e-07 1.2059200293616732e-06 -4.2109719866035936e-07
-                                angularVelocity -2.273855433398793e-05 2.6053179797383615e-06 -8.019627504869488e-06
+                                linearVelocity 2.0456477069543695e-05 1.6749061715308289e-06 1.4705427542146267e-05
+                                angularVelocity -4.937821481706496e-06 -2.6581141383143747e-05 1.4778901557847814e-05
                               }
                             }
                           ]
@@ -2066,8 +2046,8 @@ Robot {
                               -8.965e-07 2.79969e-05 -3.8476e-05
                             ]
                           }
-                          linearVelocity -9.947427023350817e-07 7.82847423677837e-07 -9.57141949351811e-07
-                          angularVelocity -2.276453000046903e-05 2.739317021171414e-06 -8.053458153131555e-06
+                          linearVelocity 1.6139388787181136e-05 1.3456693774086636e-06 1.2165971083393498e-05
+                          angularVelocity -4.8492319394633855e-06 -2.6615620997443743e-05 1.466479720806729e-05
                         }
                       }
                     ]
@@ -2092,8 +2072,8 @@ Robot {
                         -8.3954e-07 8.5883e-05 -3.91763e-05
                       ]
                     }
-                    linearVelocity -8.621850208567356e-07 5.259239285089828e-07 -2.394503084482907e-06
-                    angularVelocity -2.2832674179451246e-05 2.858354695626136e-06 -8.133775982379901e-06
+                    linearVelocity 1.1184744053986035e-05 5.69963787054868e-07 8.602741197782908e-06
+                    angularVelocity -4.614102009436586e-06 -2.6515402787105064e-05 1.4376401374939147e-05
                   }
                 }
               ]
@@ -2117,8 +2097,8 @@ Robot {
                   -1.919e-08 -4.10822e-06 2.51e-09
                 ]
               }
-              linearVelocity -1.019163000497885e-06 4.3956036415970827e-07 -2.9677232774004065e-06
-              angularVelocity -2.2940422646856007e-05 2.9558512520470685e-06 -8.261999507967883e-06
+              linearVelocity 6.9798035778076995e-06 -8.567065833134728e-08 5.484204149321398e-06
+              angularVelocity -4.241468380176556e-06 -2.6275457884094618e-05 1.3925286779793668e-05
             }
           }
         ]
@@ -2138,13 +2118,13 @@ Robot {
             5.00219e-06 1.27352e-05 -2.77008e-05
           ]
         }
-        linearVelocity -1.2585802615282038e-06 -1.2471945971643848e-07 -1.7275286317116586e-06
-        angularVelocity 1.778449158672573e-05 -2.2873119711504157e-05 -1.098062574836665e-05
+        linearVelocity 3.203756459322405e-06 6.0757065042993945e-09 3.887613682424725e-06
+        angularVelocity -4.043878371454315e-06 -2.6004641535391952e-05 1.3195740482044225e-05
       }
     }
     DEF LHipYawPitch HingeJoint {
       jointParameters HingeJointParameters {
-        position -1.2944620946515208e-06
+        position -1.644517343312184e-06
         axis 0 0.707107 -0.707107
         anchor 0 0.05 -0.085
       }
@@ -2162,7 +2142,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0.05 -0.085
-        rotation 0 -0.7071067811865476 0.7071067811865476 1.294601358710161e-06
+        rotation 0 -0.7071067811865476 0.7071067811865476 1.644537408509467e-06
         children [
           Shape {
             appearance USE MAIN_SKIN_APP
@@ -2190,7 +2170,7 @@ Robot {
           }
           DEF LHipRoll HingeJoint {
             jointParameters HingeJointParameters {
-              position 0.05576434624923613
+              position 0.02651776354891247
             }
             device [
               RotationalMotor {
@@ -2205,13 +2185,13 @@ Robot {
               }
             ]
             endPoint Solid {
-              rotation 1 0 0 0.05576434624923825
+              rotation 0.9999999999999999 0 0 0.026517763548919382
               children [
                 USE HIP_ROLL_CYL_TRANS
                 USE UPPER_THIGH_SHAPE
                 DEF LHipPitch HingeJoint {
                   jointParameters HingeJointParameters {
-                    position -0.33333157246221085
+                    position -0.060140027880148286
                     axis 0 1 0
                   }
                   device [
@@ -2227,7 +2207,7 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    rotation 0 -1 0 0.33333157246221085
+                    rotation 0 -0.9999999999999999 0 0.06014002788014769
                     children [
                       Shape {
                         appearance USE MAIN_SKIN_APP
@@ -2255,7 +2235,7 @@ Robot {
                       }
                       DEF LKneePitch HingeJoint {
                         jointParameters HingeJointParameters {
-                          position 0.3999982454847062
+                          position 0.6815848017992228
                           axis 0 1 0
                           anchor 0 0 -0.1
                         }
@@ -2273,7 +2253,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0 0 -0.1
-                          rotation 0 1 0 0.3999982454847066
+                          rotation 0 1 0 0.6815848017992229
                           children [
                             Shape {
                               appearance USE MAIN_SKIN_APP
@@ -2311,7 +2291,7 @@ Robot {
                             }
                             DEF LAnklePitch HingeJoint {
                               jointParameters HingeJointParameters {
-                                position -0.0869674165520341
+                                position -0.6213057302830132
                                 axis 0 1 0
                                 anchor 0 0 -0.1029
                               }
@@ -2329,12 +2309,12 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0 0 -0.1029
-                                rotation 0 -1 0 0.08696741655203598
+                                rotation 0 -1 0 0.6213057302830131
                                 children [
                                   USE ANKLE_SHAPE
                                   DEF LAnkleRoll HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position -0.11199383828035692
+                                      position -0.1738395985137468
                                     }
                                     device [
                                       RotationalMotor {
@@ -2349,22 +2329,22 @@ Robot {
                                       }
                                     ]
                                     endPoint Solid {
-                                      rotation -1 0 0 0.11199383828035542
+                                      rotation -1 0 0 0.1738395985137462
                                       children [
                                         DEF LEFT_FOOT_SLOT Transform {
                                           translation 0.0254 0.00332 -0.03241
                                         }
                                         DEF LFsr TouchSensor {
-                                          translation 0.019984576449653124 0.00700215283365746 -0.040630838399149605
-                                          rotation -4.561277401628216e-06 2.4401125604120006e-06 0.9999999999866204 -3.1415858517565054
+                                          translation 0.020008268545400554 0.006995967988503098 -0.04076539418353482
+                                          rotation -4.4137609822571155e-07 1.4015423961506928e-06 0.9999999999989205 -3.1415848367264823
                                           name "LFsr"
                                           contactMaterial "NAO foot material"
                                           boundingObject USE FOOT_Box
                                           physics USE FSR_Physics
                                           type "force-3d"
                                           lookupTable []
-                                          linearVelocity 1.8092356109700981e-06 1.2741108868681898e-06 -2.7070493604882416e-06
-                                          angularVelocity 1.2190377886368742e-05 -4.7900994941066836e-05 8.193737410709183e-07
+                                          linearVelocity -1.8021810645360618e-05 -5.124047006400862e-07 -1.028607852861439e-05
+                                          angularVelocity -2.4300761203825654e-06 -4.583999166860195e-05 6.727899858076322e-06
                                         }
                                         Shape {
                                           appearance USE STRUCTURE_APP
@@ -2413,7 +2393,7 @@ Robot {
                                           gradual TRUE
                                         }
                                         DEF LFOOT_LBUMPER TouchSensor {
-                                          translation 0.09 -0.158 -0.023
+                                          translation 0.09 0.022 -0.023
                                           children [
                                             Transform {
                                               translation -0.09 -0.022 0.023
@@ -2477,8 +2457,8 @@ Robot {
                                           -5.69572e-06 0.000139379 1.87409e-05
                                         ]
                                       }
-                                      linearVelocity 2.1281068619089157e-06 1.055409357386439e-06 -2.7545411914382266e-06
-                                      angularVelocity 1.2222899711507627e-05 -4.7850877451182694e-05 8.398584168236211e-07
+                                      linearVelocity -1.4718495822311945e-05 -4.851544923524701e-07 -8.406428695589612e-06
+                                      angularVelocity -2.439195675331089e-06 -4.5699743263705795e-05 6.748644916070141e-06
                                     }
                                   }
                                 ]
@@ -2495,8 +2475,8 @@ Robot {
                                     -2.634e-08 3.86194e-06 1.834e-08
                                   ]
                                 }
-                                linearVelocity 1.9976556973889407e-06 7.49488661685154e-07 -2.8374196830838064e-06
-                                angularVelocity 4.401130119672489e-06 -4.3023630420518385e-05 1.3061685499742086e-06
+                                linearVelocity -1.1780251248609727e-05 -6.555389177600778e-07 -7.994550391865566e-06
+                                angularVelocity -2.482766371153204e-06 -4.5624051542918204e-05 6.908700619253144e-06
                               }
                             }
                           ]
@@ -2513,8 +2493,8 @@ Robot {
                               6.3362e-07 3.6497e-05 3.94952e-05
                             ]
                           }
-                          linearVelocity 1.9411292668432234e-06 5.97717110533946e-07 -1.862792380285716e-06
-                          angularVelocity 4.44808626530989e-06 -4.299360839001841e-05 1.37675749150003e-06
+                          linearVelocity -8.582482615794452e-06 -4.29537253801699e-07 -4.875457312417331e-06
+                          angularVelocity -2.562802767359145e-06 -4.5542100017096546e-05 7.022593404885935e-06
                         }
                       }
                     ]
@@ -2531,8 +2511,8 @@ Robot {
                         9.2451e-07 8.53067e-05 3.83616e-05
                       ]
                     }
-                    linearVelocity 9.798682247140827e-07 4.032623612988478e-07 -4.5031609424170735e-07
-                    angularVelocity 4.531196726023461e-06 -4.300843014782815e-05 1.4850657894480998e-06
+                    linearVelocity -6.372534245296315e-06 -2.412896781887755e-07 -2.367250876026655e-06
+                    angularVelocity -2.78755121286222e-06 -4.537454342149798e-05 7.324707323614664e-06
                   }
                 }
               ]
@@ -2549,8 +2529,8 @@ Robot {
                   -2.233e-08 -4.08164e-06 -4.19e-09
                 ]
               }
-              linearVelocity 6.664545236862892e-07 3.0677372501675923e-07 -9.378408273951884e-07
-              angularVelocity 5.144560840122739e-06 -4.1971309961318e-05 -1.553317975873942e-06
+              linearVelocity -3.771895720722633e-06 -3.770856101103419e-07 -1.7393906950364288e-06
+              angularVelocity -3.1847168023097684e-06 -4.5258028767362115e-05 7.837822601968218e-06
             }
           }
         ]
@@ -2570,8 +2550,8 @@ Robot {
             -4.99449e-06 1.27482e-05 2.34547e-05
           ]
         }
-        linearVelocity 4.216580007347934e-07 1.2702927974655475e-07 -4.0990926099172916e-07
-        angularVelocity 5.738181275578891e-06 -4.230812109373702e-05 -1.4316024830593107e-06
+        linearVelocity -1.2259413367004522e-06 -2.7941828022113966e-07 1.997798194458663e-07
+        angularVelocity -3.3974394078168567e-06 -4.51966619768295e-05 8.623265174329986e-06
       }
     }
     DEF ARMS_AXIS Transform {
@@ -2590,7 +2570,7 @@ Robot {
       ]
     }
   ]
-  name "NAO(1)"
+  name "NAO"
   model "NAO_H25_V50"
   contactMaterial "NAO material"
   boundingObject Transform {
@@ -2617,172 +2597,159 @@ Robot {
   }
   controller "nao_demo"
   window "generic_window"
-  linearVelocity -1.834537631474113e-06 -3.0174243106082637e-07 1.721008014614102e-06
-  angularVelocity 6.456927997435391e-06 -4.159407867447453e-05 5.066119414804849e-07
+  linearVelocity -1.8312556708747621e-06 -7.856975073514444e-08 1.9029285845497125e-06
+  angularVelocity -2.9282466813731803e-06 -3.7098244700635246e-05 2.05822943165685e-05
+}
+SolidBox {
+  translation 1.15 0.19 0.5499999999999999
+  size 0.1 0.1 0.1
+  appearance PBRAppearance {
+    baseColor 1 0 0
+    baseColorMap ImageTexture {
+      url [
+        "textures/carpet.jpg"
+      ]
+      repeatS FALSE
+      repeatT FALSE
+      filtering 0
+    }
+    roughness 0.5
+    metalness 0
+  }
+}
+Wall {
+  translation 1.1099999999999999 0 -1.24
+  size 1 0.05 0.02
+}
+Wall {
+  translation 0.38999999999999996 0 0.01
+  rotation 0 1 0 1.5707959999999999
+  name "wall(1)"
+  size 1 0.05 0.02
 }
 Nao {
-  hidden position_0_0 -2.47281362053541e-13
-  hidden position2_0_0 -3.94988417765683e-08
-  hidden position_0_1 3.2772712388092858e-06
-  hidden position2_0_1 5.105888083136702e-11
-  hidden position_0_2 3.2772706382602872e-06
-  hidden position2_0_2 -5.387727896716532e-11
-  hidden position_0_3 -3.337913579550321e-06
-  hidden position_0_4 -3.2943860310510392e-06
+  hidden position_0_0 2.8319360745321307e-16
+  hidden position2_0_0 -2.633532344617755e-08
+  hidden position_0_1 2.1848446968826733e-06
+  hidden position2_0_1 3.432000428771426e-11
+  hidden position_0_2 2.1848447037083214e-06
+  hidden position2_0_2 -3.432043362966122e-11
+  hidden position_0_3 -1.3035944410399858e-06
+  hidden position_0_4 -1.3035943628910911e-06
   hidden translation_11 0 0 0.1265
-  hidden rotation_11 -1.2364068102434754e-13 -0.9999999999804032 -6.260471217041825e-06 4.2146848510894035e-08
+  hidden rotation_11 1.4159680372660653e-16 -0.9999999999999999 1.0753374950263512e-08 2.9802322387695313e-08
   hidden translation_18 0 -0.098 0.1
-  hidden rotation_18 2.552944041258517e-11 0.9999999998786366 1.557969331939568e-05 3.27730706975041e-06
-  hidden position_18_0 2.083897709293721e-09
+  hidden rotation_18 1.716000214174003e-11 0.999999999876626 1.5708212273592736e-05 2.184939130934463e-06
+  hidden position_18_0 1.0987342681998316e-06
   hidden translation_19 0.105 -0.015 0
-  hidden rotation_19 1 0 0 0
-  hidden position_19_0 8.541536499438693e-09
+  hidden rotation_19 1 0 0 1.0986512059668895e-06
+  hidden position_19_0 6.051778536000723e-07
   hidden translation_20 0 0 0
-  hidden rotation_20 0 0 1 0
-  hidden position_20_0 2.0106296654973485e-07
+  hidden rotation_20 0 0 1 6.049210766012823e-07
+  hidden position_20_0 -4.224902449763003e-07
   hidden translation_21 0.05595 0 0
-  hidden rotation_21 1 0 0 2.0212918469683143e-07
-  hidden position_21_0 -2.2132446007644818e-11
-  hidden position_21_1 -2.2132158910741245e-11
-  hidden position_21_2 4.5457942620669983e-10
+  hidden rotation_21 -0.9999999999999999 0 0 4.2252084251516616e-07
+  hidden position_21_0 -2.2137378458934657e-11
+  hidden position_21_1 -2.212748885214579e-11
+  hidden position_21_2 3.030639073067889e-10
   hidden translation_22 0.069 -0.013 -0.005
-  hidden rotation_22 0 1 0 0.9599999996755066
-  hidden position_22_0 2.451781001536305e-10
+  hidden rotation_22 0 1 0 0.9600000003984694
+  hidden position_22_0 1.6348411515594013e-10
   hidden translation_23 0.014 0 0
-  hidden rotation_23 0 1 0 0.9599999981543186
-  hidden position_23_0 1.1240319789134466e-10
+  hidden rotation_23 0 1 0 0.959999997792997
+  hidden position_23_0 7.494582732958918e-11
   hidden translation_24 0.014 0 0
-  hidden rotation_24 0 1 0 0.9599999993246868
+  hidden rotation_24 0 1 0 0.9599999990069712
   hidden translation_25 0.069 0.013 -0.005
-  hidden rotation_25 0 1 0 0.959999999683768
-  hidden position_25_0 2.45159892448325e-10
+  hidden rotation_25 0 1 0 0.9600000003984166
+  hidden position_25_0 1.6343404412204104e-10
   hidden translation_26 0.014 0 0
-  hidden rotation_26 0 1 0 0.9599999981542998
-  hidden position_26_0 1.1241074745889243e-10
+  hidden rotation_26 0 1 0 0.9599999977936153
+  hidden position_26_0 7.493961009258591e-11
   hidden translation_27 0.014 0 0
-  hidden rotation_27 0 1 0 0.9599999992880439
+  hidden rotation_27 0 0.9999999999999999 0 0.9599999990070357
   hidden translation_28 0.049 0 -0.026
   hidden rotation_28 0 1 0 0
-  hidden position_28_0 6.676204040848093e-11
+  hidden position_28_0 4.449918217618803e-11
   hidden translation_29 0.014 0 0
-  hidden rotation_29 0 -1 0 0.9599999995004926
+  hidden rotation_29 0 -1 0 0.9599999994104432
   hidden translation_30 0 0.098 0.1
-  hidden rotation_30 -2.69386394799424e-11 0.9999999998648683 -1.643967950978772e-05 3.27730706975041e-06
-  hidden position_30_0 5.473167725850635e-07
+  hidden rotation_30 -1.716021681271343e-11 0.9999999998766229 -1.5708408733655706e-05 2.184939130934463e-06
+  hidden position_30_0 -1.098734257767792e-06
   hidden translation_31 0.105 0.015 0
-  hidden rotation_31 1 0 0 5.470979139413201e-07
-  hidden position_31_0 -6.11933364733822e-07
+  hidden rotation_31 -0.9999999999999999 0 0 1.0986512059668895e-06
+  hidden position_31_0 -6.051778449228183e-07
   hidden translation_32 0 0 0
-  hidden rotation_32 0 0 -1 6.122183377794688e-07
-  hidden position_32_0 -2.010690032122036e-07
+  hidden rotation_32 0 0 -1 6.049210766012823e-07
+  hidden position_32_0 4.2249024405630657e-07
   hidden translation_33 0.05595 0 0
-  hidden rotation_33 -1 0 0 2.0212918469683143e-07
-  hidden position_33_0 -2.2128790495647907e-11
-  hidden position_33_1 -2.2135461627721664e-11
-  hidden position_33_2 4.546107483732679e-10
+  hidden rotation_33 0.9999999999999999 0 0 4.2252084251516616e-07
+  hidden position_33_0 -2.2138851884429876e-11
+  hidden position_33_1 -2.2132783281911023e-11
+  hidden position_33_2 3.030764528268248e-10
   hidden translation_34 0.069 -0.013 -0.005
-  hidden rotation_34 0 1 0 0.9600000006301194
-  hidden position_34_0 2.4517887726893086e-10
+  hidden rotation_34 0 1 0 0.9600000003983185
+  hidden position_34_0 1.6346901612362835e-10
   hidden translation_35 0.014 0 0
-  hidden rotation_35 0 1 0 0.9599999981032272
-  hidden position_35_0 1.124018656495349e-10
+  hidden rotation_35 0 1 0 0.9599999977930951
+  hidden position_35_0 7.492628741443389e-11
   hidden translation_36 0.014 0 0
-  hidden rotation_36 0 1 0 0.9599999993287365
+  hidden rotation_36 0 1 0 0.9599999990073002
   hidden translation_37 0.069 0.013 -0.005
-  hidden rotation_37 0 1 0 0.96000000063014
-  hidden position_37_0 2.4520596670468905e-10
+  hidden rotation_37 0 1 0 0.9600000003542004
+  hidden position_37_0 1.6347856409864735e-10
   hidden translation_38 0.014 0 0
-  hidden rotation_38 0 0.9999999999999999 0 0.9599999981029704
-  hidden position_38_0 1.1240886001431405e-10
+  hidden rotation_38 0 1 0 0.9599999977930532
+  hidden position_38_0 7.492950708909433e-11
   hidden translation_39 0.014 0 0
-  hidden rotation_39 0 0.9999999999999999 0 0.959999999328976
+  hidden rotation_39 0 1 0 0.9599999990071607
   hidden translation_40 0.049 0 -0.026
   hidden rotation_40 0 1 0 0
-  hidden position_40_0 6.675160427800487e-11
+  hidden position_40_0 4.449607354395671e-11
   hidden translation_41 0.014 0 0
-  hidden rotation_41 0 -1 0 0.959999999490679
+  hidden rotation_41 0 -1 0 0.9599999994104413
   hidden translation_42 0 -0.05 -0.085
-  hidden rotation_42 0 -0.7071067811865476 -0.7071067811865476 3.3378601074222625e-06
-  hidden position_42_0 1.731616543275215e-06
+  hidden rotation_42 0 -0.7071067811865475 -0.7071067811865475 1.303489668883647e-06
+  hidden position_42_0 1.6632420670635049e-06
   hidden translation_43 0 0 0
-  hidden rotation_43 1 0 0 1.7316149528425222e-06
-  hidden position_43_0 -3.655391056511803e-06
+  hidden rotation_43 1 0 0 1.6633327320070538e-06
+  hidden position_43_0 -1.9857779429699463e-06
   hidden translation_44 0 0 0
-  hidden rotation_44 0 -0.9999999999999999 0 3.6553735986862414e-06
-  hidden position_44_0 -1.928620214775092e-06
+  hidden rotation_44 0 -1 0 1.9858278332899052e-06
+  hidden position_44_0 -2.0078795150979545e-06
   hidden translation_45 0 0 -0.1
-  hidden rotation_45 0 -1 0 1.928650103493221e-06
-  hidden position_45_0 -3.0883865589359516e-06
+  hidden rotation_45 0 -1 0 2.0078450754525877e-06
+  hidden position_45_0 -2.062669523184013e-06
   hidden translation_46 0 0 -0.1029
-  hidden rotation_46 0 -1 0 3.0883892321340487e-06
-  hidden position_46_0 1.2079021797311672e-08
+  hidden rotation_46 0 -1 0 2.0626135436295323e-06
+  hidden position_46_0 -3.322536870243334e-06
   hidden translation_47 0 0 0
-  hidden rotation_47 1 0 0 0
-  hidden translation_48 0.019999760935474398 -0.006994335797457785 -0.04079801446954213
-  hidden rotation_48 -1.3459525887667995e-07 -1.4092343736489134e-08 0.9999999999999909 -3.1415852965565008
+  hidden rotation_47 -1 0 0 3.3225245790596335e-06
+  hidden translation_48 0.019999959587490235 -0.006999933425271498 -0.040838467443333686
+  hidden rotation_48 -1.0779873943562062e-07 -4.695234479022411e-10 0.9999999999999942 -3.1415853129951374
   hidden translation_52 0 0.05 -0.085
-  hidden rotation_52 0 -0.7071067811865476 0.7071067811865476 3.2943363687271347e-06
-  hidden position_52_0 -1.7471305268453043e-06
+  hidden rotation_52 0 -0.7071067811865475 0.7071067811865475 1.303489668883647e-06
+  hidden position_52_0 -1.6632410431110193e-06
   hidden translation_53 0 0 0
-  hidden rotation_53 -0.9999999999999999 0 0 1.747188950431385e-06
-  hidden position_53_0 -3.6290952891704364e-06
+  hidden rotation_53 -0.9999999999999999 0 0 1.6633327320070538e-06
+  hidden position_53_0 -1.9857776409892836e-06
   hidden translation_54 0 0 0
-  hidden rotation_54 0 -1 0 3.629037008259501e-06
-  hidden position_54_0 -3.102564391177509e-06
+  hidden rotation_54 0 -1 0 1.9858278332899052e-06
+  hidden position_54_0 -2.007879253973499e-06
   hidden translation_55 0 0 -0.1
-  hidden rotation_55 0 -1 0 3.102592095766359e-06
-  hidden position_55_0 -3.0986181300818316e-06
+  hidden rotation_55 0 -1 0 2.0078450754525877e-06
+  hidden position_55_0 -2.0626693437719723e-06
   hidden translation_56 0 0 -0.1029
-  hidden rotation_56 0 -1 0 3.098581726687272e-06
-  hidden position_56_0 -4.157614096462315e-10
+  hidden rotation_56 0 -1 0 2.0626135436295323e-06
+  hidden position_56_0 3.322536753948653e-06
   hidden translation_57 0 0 0
-  hidden rotation_57 1 0 0 0
-  hidden translation_58 0.02000013797185818 0.006994337016718477 -0.040798017586226906
-  hidden rotation_58 -1.3507160032560718e-07 1.4122823688385104e-08 0.9999999999999909 -3.141585296308714
-  translation -0.9234852282000559 0.3324804998983526 1.432105182437132
-  rotation -0.9994040302167683 -0.024276878595690065 -0.024540121273761473 1.5713861422308624
-  controller "WallStepController"
-}
-Wall {
-  translation 2.350000001678214 0 -0.4899999063556667
-  rotation 0 -1 0 1.5707963603591737
-  name "wall(1)"
-  size 1 0.6 0.2
-  appearance Roughcast {
-    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
-    textureTransform TextureTransform {
-      scale 1 2.4
-    }
-  }
-}
-Wall {
-  translation 0.8600000000000003 0 0
-  size 1 0.6 0.2
-  appearance Roughcast {
-    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
-    textureTransform TextureTransform {
-    }
-  }
-}
-Wall {
-  translation 0.5 -0.32999999999999996 1.45
-  rotation 0 1 0 -1.5707963071795863
-  name "wall(4)"
-  size 1 0.6 0.2
-  appearance Roughcast {
-    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
-    textureTransform TextureTransform {
-    }
-  }
-}
-Wall {
-  translation 1.8500000000000008 0 -1.0400000000000003
-  name "wall(2)"
-  size 1 0.6 0.2
-  appearance Roughcast {
-    colorOverride 0.5333333333333333 0.5411764705882353 0.5215686274509804
-    textureTransform TextureTransform {
-      scale 1 2.4
-    }
-  }
+  hidden rotation_57 1 0 0 3.3225245790596335e-06
+  hidden translation_58 0.019999959587554184 0.00699993342576688 -0.04083846746421833
+  hidden rotation_58 -1.0779874368222595e-07 4.697932043416611e-10 0.9999999999999943 -3.1415853013640374
+  translation 1.1588360011470398 0.33252092383513204 -1.3928999448095347
+  rotation 0.5768234457040025 0.5775389076109033 0.5776880842476898 -2.0949613849998503
+  name "NAO(1)"
+  color 0 0 0
+  controller "GyroController"
+  synchronization FALSE
 }

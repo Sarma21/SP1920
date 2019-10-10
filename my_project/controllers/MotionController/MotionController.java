@@ -1,109 +1,98 @@
-// File:          MotionController.java
-// Date:
-// Description:
-// Author:
-// Modifications:
-
-// You may need to add other webots classes such as
-//  import com.cyberbotics.webots.controller.DistanceSensor;
-//  import com.cyberbotics.webots.controller.LED;
-//import java.util.Date;
-//import java.util.concurrent.TimeUnit;
 import com.cyberbotics.webots.controller.*;
-import java.nio.file.Path;
+import java.io.File;
 
-// Here is the main class of your controller.
-// This class defines how to initialize and how to run your controller.
 public class MotionController {
-  //static String pfad = "/home/pc/Downloads/webots/projects/robots/softbank/nao/motions/";
-  static String pfad = "Motions/"; 
-  //static String path = FileSystems.getDefault().getPath("webots","projects","robots","softbank","nao","motions");
-  //static String pfad = "../../";
   static Robot robot = new Robot();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
-  static Motion forWard, sideStepRight, turnLeft, handWave, anfall, up, bauch;
-  // This is the main function of your controller.
-  // It creates an instance of your Robot instance and
-  // it uses its function(s).
-  // Note that only one instance of Robot should be created in
-  // a controller program.
-  // The arguments of the main function can be specified by the
-  // "controllerArgs" field of the Robot node
+  static double[] iu;
+  static double[] acc;
+  static Motion currentlyPlaying = null;
   
-  /*
-  static void start_motion(WbMotionRef motion) {
-  // interrupt current motion
-  if (currently_playing)
-    wbu_motion_stop(currently_playing);
+  // simulated devices
+  static DistanceSensor[] sonar = {new DistanceSensor("Sonar/Left"), new DistanceSensor("Sonar/Right")}; // ultrasound sensors
+  static Accelerometer accelerometer;
+  
+  // motion file handles
+  static Motion forwards, forwards50, gehen50, gehen50Anfang, turnLeft40, turnLeft60, turnLeft180, handWave, standUpFromFront, bauch;
 
-  // start new motion
-  wbu_motion_play(motion);
-  currently_playing = motion;
-}
-  */
-   static void startMotion(Motion motion){
-    motion.play();
-    do {
-    robot.step(timeStep);
-    } while(! motion.isOver());
+  static void findAndEnableDevices() {
+    //Accelerometer
+    accelerometer = new Accelerometer("accelerometer");
+    accelerometer.enable(timeStep);
     
+    // ultrasound sensors
+    sonar[0].enable(timeStep);
+    sonar[1].enable(timeStep);
   }
-  public static void loadMotionFiles(){
-    forWard = new Motion(pfad + "Forwards.motion");
-    sideStepRight = new Motion(pfad + "SideStepRight.motion");
-    turnLeft = new Motion(pfad + "TurnLeft180.motion");
+  
+  // load motion files
+  public static void loadMotionFiles() {
+    File file = new File(System.getProperty("user.dir"));
+    file = (file.getParentFile().getParentFile());
+    String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
+    
+    forwards = new Motion(pfad + "Forwards.motion");
+    forwards50 = new Motion(pfad + "Forwards50.motion");
     handWave = new Motion(pfad + "HandWave.motion");
-    anfall = new Motion(pfad + "Anfall.motion");
-    up = new Motion(pfad + "StandUpFromFront.motion");
+    gehen50 = new Motion(pfad + "Gehen50.motion");
+    gehen50Anfang = new Motion(pfad + "Gehen50Anfang.motion");
+    turnLeft40 = new Motion(pfad + "TurnLeft40.motion");
+    turnLeft60 = new Motion(pfad + "TurnLeft60.motion");
+    turnLeft180 = new Motion(pfad + "TurnLeft180.motion");
+    standUpFromFront = new Motion(pfad + "StandUpFromFront.motion");
     bauch = new Motion(pfad + "bauch.motion");
   }
- 
+  
+  static void startMotion(Motion motion) {
+    //start new motion
+    currentlyPlaying = motion;
+    motion.play();
+    do {
+      robot.step(timeStep);
+    } while (!motion.isOver());
+    
+  }
+  
+   static void printAccelerometer() {
+    System.out.println("X:" + acc[0] + "\tY:" + acc[1] + "\tZ:" + acc[2]);
+  }
+
+  static void move() {
+    boolean hindernis = false; // Prüfung ob Drehung nötig
+    double dist[] = {sonar[0].getValue(), sonar[1].getValue()};
+
+    for (int sensor = 0; sensor < 2; sensor++) {
+      if (dist[sensor] < 0.48) { // Prüft beide Sensoren auf Hindernisse
+        hindernis = true;
+      }
+    }
+    if (hindernis) {
+      //stoppe momentane Motion
+      currentlyPlaying.stop();
+      
+      startMotion(turnLeft60);
+    } else {
+      startMotion(forwards50);
+    }
+  }
   
   
   public static void main(String[] args) {
-
-    // create the Robot instance.
-    
+    // initialize stuff
+    findAndEnableDevices();
     loadMotionFiles();
-    robot.setMode(2);      //Real Robot 2
-    System.out.println("Mode: " + robot.getMode());
-    // get the time step of the current world.
     
-
-    // You should insert a getDevice-like function in order to get the
-    // instance of a device of the robot. Something like:
-    //  LED led = robot.getLED("ledname");
-    //  DistanceSensor ds = robot.getDistanceSensor("dsname");
-    //  ds.enable(timeStep);
-    
-    
-    startMotion(handWave);          
-   /*
-    startMotion(forWard);
-    startMotion(forWard);
-    startMotion(sideStepRight);
-    startMotion(turnLeft); 
-    startMotion(turnLeft);    
-    */
-    startMotion(bauch);
-    startMotion(bauch);
-    startMotion(up);
     startMotion(handWave);
-    startMotion(up);
     
-
-    // Main loop:
-    // - perform simulation steps until Webots is stopping the controller
     while (robot.step(timeStep) != -1) {
-      // Read the sensors:
-      // Enter here functions to read sensor data, like:
-      //  double val = ds.getValue();
-      //startMotion(forWard);
-      // Process sensor data here.
-      // Enter here functions to send actuator commands, like:
-      //  led.set(1);
+      acc = accelerometer.getValues();
+ 
+      if (currentlyPlaying == null || currentlyPlaying.isOver()) {
+        //startMotion(standUpFromFront);
+        move();
+      } else {
+        move();
+      }
     };
-
-    // Enter here exit cleanup code.
   }
 }
