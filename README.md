@@ -12,6 +12,9 @@ Software Projekt an der Hochschule Bochum 2019/2020.
 * **Windows** 10, 8.1, 8 und 7.
 * **macOS** ab 10.12.
 
+## NAO
+* [NAO - Technical overview](http://doc.aldebaran.com/2-1/family/robots/index_robots.html)
+
 ## Webots
 * [NAO Motoren](https://cyberbotics.com/doc/guide/nao)
 * [Webots User Guide](https://www.cyberbotics.com/doc/guide/index)
