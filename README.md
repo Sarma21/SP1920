@@ -21,15 +21,6 @@ Nur auf: Windows 10, Windows 8.1, Windows 8 und Windows 7.
 * [Accessing the NAO Web page](http://doc.aldebaran.com/2-1/nao/webpage_access.html#access-webpage-nao)
 * [NAO Motoren](https://cyberbotics.com/doc/guide/nao)
 
-### Zugriff NAO über ssh
-Benutzer | Passwort
---- | ---
-root | root
-
-in a Linux terminal, run:
-```
-ssh nao@192.168.1.10
-```
 ## Webots
 * [Webots User Guide](https://www.cyberbotics.com/doc/guide/index)
 * [Webots Reference Manual (Java-API)](https://www.cyberbotics.com/doc/reference/java-api)
