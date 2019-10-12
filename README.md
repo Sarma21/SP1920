@@ -23,4 +23,4 @@ Software Projekt an der Hochschule Bochum 2019/2020.
 * [Motion Functions](https://www.cyberbotics.com/doc/reference/motion)
 
 ## Webots Download
-* [Version R2019b Rev1](https://github.com/cyberbotics/webots/releases/tag/R2019b-rev1)
+* [Download](https://github.com/cyberbotics/webots/releases/latest)
