@@ -36,30 +36,28 @@ public class FarberkennungController {
       int[] image = cameraBottom.getImage();
       for (int i=0; i < image.length; i++){
         int pixel = image[i];
-        r = r + Camera.pixelGetRed(pixel);
-        g = g + Camera.pixelGetGreen(pixel);
-        b = b + Camera.pixelGetBlue(pixel);
+        r += Camera.pixelGetRed(pixel);
+        g += Camera.pixelGetGreen(pixel);
+        b += Camera.pixelGetBlue(pixel);
       }
-      r = r/image.length;
-      g = g/image.length;
-      b = b/image.length;
-      System.out.println("red=" + r + "   green=" + g + "   blue="+ b);
+      r /= image.length;
+      g /= image.length;
+      b /= image.length;
+      System.out.println("red=" + r + "\tgreen=" + g + "\tblue="+ b);
     }
 
   public static void main(String[] args) {
-    
-   loadMotionsFiles();
-    
-    cameraTop = new Camera("CameraTop");
-    cameraBottom = new Camera("CameraBottom");
-    cameraTop.enable(4*timeStep);
-    cameraBottom.enable(4*timeStep);
-    while (robot.step(timeStep) != -1) {
-        while(r < 225){
-          startMotion(gehen50);
-          getColour();
-        }
-        
-    };
+      loadMotionsFiles();
+      cameraTop = new Camera("CameraTop");
+      cameraBottom = new Camera("CameraBottom");
+      cameraTop.enable(4*timeStep);
+      cameraBottom.enable(4*timeStep);
+      while (robot.step(timeStep) != -1) {
+          //gehe solange bis das Bild der Kamera vollständig aus roten Pixeln besteht
+          while(r < 225){
+              startMotion(gehen50);
+              getColour();
+          }
+      };
   }
 }
