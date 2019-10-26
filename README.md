@@ -1,4 +1,7 @@
 # SP1920
+
+**This project uses [Webots](https://cyberbotics.com/), a commercial mobile robot simulation software developed by Cyberbotics Ltd.**
+
 Software Projekt an der Hochschule Bochum 2019/2020. 
 
 *"Aufbau und Test einer virtuellen Entwicklungsumgebung für NAO-Roboter. (z.B. mit dem WEBOTS-Simulator)"*
