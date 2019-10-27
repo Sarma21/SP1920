@@ -2,7 +2,7 @@ import com.cyberbotics.webots.controller.*;
 import java.io.File;
 
 public class SensorController {
-  static Robot robot = new Robot();
+  static Robot robot = new Robot(); // create the Robot instance.
   static CameraRecognitionObject cameraRecognitionObject = new CameraRecognitionObject();
   static int timeStep = (int) Math.round(robot.getBasicTimeStep());
   static int[] imageTop, imageBottom;
@@ -37,7 +37,7 @@ public class SensorController {
     sonar[0].enable(timeStep);
     sonar[1].enable(timeStep);
 
-    /*
+    
     // inertialUnit
     inertialUnit = new InertialUnit("InertialUnit");
     inertialUnit.enable(timeStep);
@@ -59,7 +59,6 @@ public class SensorController {
     lfoot_rbumper.enable(timeStep);
     rfoot_lbumper.enable(timeStep);
     rfoot_rbumper.enable(timeStep);
-    */
   }
   
   // load motion files
@@ -122,7 +121,7 @@ public class SensorController {
       }
     else startMotion(gehen50);
   }
- 
+  // entry point of the controller 
   public static void main(String[] args) {
     // initialize stuff
     findAndEnableDevices();
@@ -132,7 +131,11 @@ public class SensorController {
     //camCheck();
     startMotion(gehen50Anfang);
 
+    // feedback loop: step simulation until receiving an exit event
     while (robot.step(timeStep) != -1) {
+      // read sensors outputs
+      // process behavior
+      // write actuators inputs
       move();
     };
   }
