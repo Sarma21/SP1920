@@ -1,6 +1,6 @@
 import com.cyberbotics.webots.controller.*;
 
-public class TouchSensorController {
+public class InertialUnitController {
     static Robot robot = new Robot();
     static int timeStep = (int) Math.round(robot.getBasicTimeStep());
     static double[] val;
@@ -8,7 +8,7 @@ public class TouchSensorController {
     static InertialUnit iu;  // inertialunit
     
     public static void main(String[] args) {
-        iu = robot.getInertialUnit("inertial unit");
+        iu = new InertialUnit("inertial unit");
 
         iu.enable(timeStep);
 
