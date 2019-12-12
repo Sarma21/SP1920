@@ -256,7 +256,7 @@ public class MainController {
         int pixel = image[i];
         if (i >= p3 && i <= p4){
           if (loop < loopEnd){
-            if (i<=p1 && i <= p2){
+            if (i >= p1 && i <= p2){
               r1 += Camera.pixelGetRed(pixel);
               g1 += Camera.pixelGetGreen(pixel);
               b1 += Camera.pixelGetBlue(pixel);
@@ -289,7 +289,7 @@ public class MainController {
         int pixel = image[i];
         if (i >= p3 && i <= p4){
           if (loop < loopEnd){
-            if (i<=p1 && i <= p2){
+            if (i >= p1 && i <= p2){
               r2 += Camera.pixelGetRed(pixel);
               g2 += Camera.pixelGetGreen(pixel);
               b2 += Camera.pixelGetBlue(pixel);
