@@ -26,6 +26,16 @@ public class MainController {
   static int rr2 = 0;
   static int gr2 = 0;
   static int br2 = 0;
+  //TopCamera RGB eines bestimmten Bereichs
+  static int r1 = 0;
+  static int g1 = 0;
+  static int b1 = 0; 
+  //BottomCamera RGB eines bestimmten Bereichs
+  static int r2 = 0;
+  static int g2 = 0;
+  static int b2 = 0;
+  
+  /*------Später werden sie in ein Array gepackt!-------*/
     
   //static InertialUnit inertialUnit;
   static Camera cameraTop, cameraBottom; //cameras
@@ -220,6 +230,84 @@ public class MainController {
     //System.out.println("BottomCamera rechte Seite Pixel: " + x);
     //System.out.println("red=" + rr2 + "\tgreen=" + gr2 + "\tblue="+ br2);
   }
+    /*
+      Mir dieser Funktion lässt sich der durchschnitts Farbwert eines bestimmten Pixelbereich errechnen 
+      x1 gibt an, wie viele Pixel auf der linken Seite übersprungen werden sollen.
+      x2 gibt an, wie viele Pixel auf der rechten Seite übersprungen werden sollen.
+      y1 gibt an, wie viele Pixel auf der oberen Seite übersprungen werden sollen.
+      y2 gibt an, wie viele Pixel auf der unteren Seite übersprungen werden sollen.
+      
+      y1 y1 y1 y1 y1 y1 y1 
+      y1 y1 y1 y1 y1 y1 y1 
+      x1 x1 P  P  x2 x2 x2
+      x1 x1 P  P  x2 x2 x2
+      y2 y2 y2 y2 y2 y2 y2 
+    */
+    static void getPixelTop(int x1, int x2, int y1, int y2){
+      int[] image = cameraTop.getImage();
+      int p1 = y1*160+x1;
+      int p2 = y1*160+160-x2; //y1*160+x1+160-x1-x2;
+      int p3 = y1*160;
+      int p4 = image.length - y2*160;
+      int loop = 0;
+      int loopEnd = 120 - y1 - y2; 
+      int x = x1*x2*y1*y2;
+      for (int i=0; i < image.length; i++){
+        int pixel = image[i];
+        if (i >= p3 && i <= p4){
+          if (loop < loopEnd){
+            if (i<=p1 && i <= p2){
+              r1 += Camera.pixelGetRed(pixel);
+              g1 += Camera.pixelGetGreen(pixel);
+              b1 += Camera.pixelGetBlue(pixel);
+            }
+            p1 += 160;
+            p2 += 160;
+            loop++;
+          }
+        }
+      }
+      // image.length/x;
+      r1 /= x;
+      g1 /= x;
+      b1 /= x;
+      
+      //System.out.println("TopCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
+      //System.out.println("red=" + r1 + "\tgreen=" + g1 + "\tblue="+ b1);
+    } 
+    //Selbe Methode für die BottomCamera
+    static void getPixelBottom(int x1, int x2, int y1, int y2){
+      int[] image = cameraBottom.getImage();
+      int p1 = y1*160+x1;
+      int p2 = y1*160+160-x2; //y1*160+x1+160-x1-x2;
+      int p3 = y1*160;
+      int p4 = image.length - y2*160;
+      int loop = 0;
+      int loopEnd = 120 - y1 - y2; 
+      int x = x1*x2*y1*y2;
+      for (int i=0; i < image.length; i++){
+        int pixel = image[i];
+        if (i >= p3 && i <= p4){
+          if (loop < loopEnd){
+            if (i<=p1 && i <= p2){
+              r2 += Camera.pixelGetRed(pixel);
+              g2 += Camera.pixelGetGreen(pixel);
+              b2 += Camera.pixelGetBlue(pixel);
+            }
+            p1 += 160;
+            p2 += 160;
+            loop++;
+          }
+        }
+      }
+      // image.length/x;
+      r2 /= x;
+      g2 /= x;
+      b2 /= x;
+
+      //System.out.println("BottomCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
+      //System.out.println("red=" + r2 + "\tgreen=" + g2 + "\tblue="+ b2);
+    } 
   
   static boolean sonarCheck(){
       double dist[] = new double[2];
@@ -287,7 +375,6 @@ public class MainController {
        if (false){
          finish = true;
        }
-       System.out.println("recht:333333 ");
        if (sonarCheck()){
         //TurnHead
        }     
