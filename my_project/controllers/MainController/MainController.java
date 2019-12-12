@@ -103,12 +103,12 @@ public class MainController {
     File file = new File(System.getProperty("user.dir"));
     file = (file.getParentFile().getParentFile());
     String pfad = file.getPath() + System.getProperty("file.separator") + "motions" + System.getProperty("file.separator");
+    
     forwards = new Motion(pfad + "Forwards.motion");
     gehen = new Motion(pfad + "Gehen50.motion");
     handWave = new Motion(pfad + "HandWave.motion");
     turnLeft40 = new Motion(pfad + "TurnLeft40");
     turnRight40 = new Motion(pfad + "TurnRight40");
-    
   }
   
   // x gibt an wie viele Pixel von der linken seite du betrachten willst
@@ -249,22 +249,24 @@ public class MainController {
       int p2 = y1*160+160-x2; //y1*160+x1+160-x1-x2;
       int p3 = y1*160;
       int p4 = image.length - y2*160;
-      int loop = 0;
-      int loopEnd = 120 - y1 - y2; 
-      int x = x1*x2*y1*y2;
+      int x = (120-y1-y2)*160-(x1*(120-y1-y2))-(x2*(120-y1-y2));
+      int zahl = 1;
+      int loop = (y1+zahl)*160;
       for (int i=0; i < image.length; i++){
         int pixel = image[i];
         if (i >= p3 && i <= p4){
-          if (loop < loopEnd){
-            if (i >= p1 && i <= p2){
-              r1 += Camera.pixelGetRed(pixel);
-              g1 += Camera.pixelGetGreen(pixel);
-              b1 += Camera.pixelGetBlue(pixel);
+          if (i >= p1 && i < p2){
+            r1 += Camera.pixelGetRed(pixel);
+            g1 += Camera.pixelGetGreen(pixel);
+            b1 += Camera.pixelGetBlue(pixel);
+            loop = (y1+zahl)*160;
+            if(i > loop){  
+              p1 += 160;
+              p2 += 160;
+              zahl++;  
             }
-            p1 += 160;
-            p2 += 160;
-            loop++;
           }
+
         }
       }
       // image.length/x;
@@ -272,8 +274,8 @@ public class MainController {
       g1 /= x;
       b1 /= x;
       
-      //System.out.println("TopCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
-      //System.out.println("red=" + r1 + "\tgreen=" + g1 + "\tblue="+ b1);
+      System.out.println("TopCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
+      System.out.println("red=" + r1 + "    green=" + g1 + "    blue="+ b1);
     } 
     //Selbe Methode für die BottomCamera
     static void getPixelBottom(int x1, int x2, int y1, int y2){
@@ -282,22 +284,24 @@ public class MainController {
       int p2 = y1*160+160-x2; //y1*160+x1+160-x1-x2;
       int p3 = y1*160;
       int p4 = image.length - y2*160;
-      int loop = 0;
-      int loopEnd = 120 - y1 - y2; 
-      int x = x1*x2*y1*y2;
+      int x = (120-y1-y2)*160-(x1*(120-y1-y2))-(x2*(120-y1-y2));
+      int zahl = 1;
+      int loop = (y1+zahl)*160;
       for (int i=0; i < image.length; i++){
         int pixel = image[i];
         if (i >= p3 && i <= p4){
-          if (loop < loopEnd){
-            if (i >= p1 && i <= p2){
-              r2 += Camera.pixelGetRed(pixel);
-              g2 += Camera.pixelGetGreen(pixel);
-              b2 += Camera.pixelGetBlue(pixel);
+          if (i >= p1 && i < p2){
+            r2 += Camera.pixelGetRed(pixel);
+            g2 += Camera.pixelGetGreen(pixel);
+            b2 += Camera.pixelGetBlue(pixel);
+            loop = (y1+zahl)*160;
+            if(i > loop){  
+              p1 += 160;
+              p2 += 160;
+              zahl++;  
             }
-            p1 += 160;
-            p2 += 160;
-            loop++;
           }
+
         }
       }
       // image.length/x;
@@ -305,8 +309,8 @@ public class MainController {
       g2 /= x;
       b2 /= x;
 
-      //System.out.println("BottomCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
-      //System.out.println("red=" + r2 + "\tgreen=" + g2 + "\tblue="+ b2);
+      System.out.println("BottomCamera Pixel Farbwerte mit x1: " + x1 + "  x2: " + x2 + "  y1:" + y1 + "  y2:" + y2);
+      System.out.println("red=" + r2 + "    green=" + g2 + "    blue="+ b2);
     } 
   
   static boolean sonarCheck(){
@@ -394,10 +398,13 @@ public class MainController {
        Top     Links r116 g118 b118 Rechts r99 g116 b130
        Bottom  Links r200 g151 b108 Rechts r114 g121 b127
        */
-       leftCheck();
+       //leftCheck();
         //10° nach rechts dreh
-       rightCheck();
+      // rightCheck();
         //10° nach links drehen 
+        
+        getPixelTop(2, 156, 1, 118);
+        getPixelBottom(2, 156, 1, 118);
        startMotion(forwards);
    }
     
